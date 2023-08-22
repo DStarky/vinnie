@@ -2,9 +2,9 @@ import Header from "../../Header/Header"
 
 const Home = () => {
   return (
-    <div className="container">
-      <Header />
-    </div>
+    <h1>
+      Главная страница
+    </h1>
   )
 }
 export default Home

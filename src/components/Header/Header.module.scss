@@ -1,0 +1,20 @@
+@import '../../assets/styles/variables';
+
+.Header {
+  background-color: $color-bg-white;
+  padding: 1.2rem 2.4rem;
+  border-radius: 1.2rem;
+  height: 8.0rem;
+  display: flex;
+  align-items: center;
+}
+
+.Logo,
+.Logo:active,
+.Logo:visited {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  color: $color-font-main;
+  font-size: 3.2rem;
+}
