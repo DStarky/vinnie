@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 
 const NavBar = () => {
   return (
     <nav>
       <ul className={styles.Navigation}>
-        <li><Link to="/">Главная</Link></li>
-        <li><Link to="delivery">Доставка</Link></li>
-        <li><Link to="about-us">О нас</Link></li>
-        <li><Link to="news">Новости</Link></li>
+        <li><NavLink className={({ isActive }) => isActive ? styles.Active : ''} to="/">Главная</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? styles.Active : ''} to="delivery">Доставка</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? styles.Active : ''} to="about-us">О нас</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? styles.Active : ''} to="news">Новости</NavLink></li>
       </ul>
     </nav>
   )
