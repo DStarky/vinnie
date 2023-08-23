@@ -1,10 +1,65 @@
-/* @import '../../assets/styles/variables'; */
+@import '../../assets/styles/variables';
 
 .Navigation {
   display: flex;
   gap: 3rem;
+  list-style-type: none;
 }
 
 .Active {
-  color: red
+  color: $color-main;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-font-main;
+  }
+}
+
+.Link {
+  color: $color-font-main;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.Phone {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+
+  & a {
+    color: $color-font-main;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-main;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
 }
