@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 import menuElements from '../../data/navigation';
-import { Phone } from 'lucide-react';
+import { Phone, X } from 'lucide-react';
 
 
-const NavBar = () => {
+const NavBar = ({ isOpen, setOpen }) => {
   return (
-    <nav>
-      <ul className={styles.Navigation}>
+    <nav className={styles.NavBar} onClick={() => setOpen(false)}>
+      <ul className={styles.Navigation} style={isOpen ? { top: 0 } : {}}>
         {menuElements.map(({ id, title, link }) => {
           return <li key={id}>
             <NavLink className={({ isActive }) => isActive ? styles.Active : styles.Link} to={link}>{title}</NavLink>
@@ -18,6 +18,7 @@ const NavBar = () => {
           <a href="tel:+73532307536">+7 (3532) 30-75-36</a>
         </div>
       </ul>
+      <X size={48} className={styles.X} style={isOpen ? { display: 'block' } : {}} />
     </nav>
   )
 }
