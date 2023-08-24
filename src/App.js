@@ -4,6 +4,9 @@ import NotFound from "./pages/NotFount/NotFound";
 import Delivery from "./pages/Delivery/Delivery";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import News from "./pages/News/News";
+import Favourites from "./pages/Favourites/Favourites"
+import UserPage from "./pages/UserPage/UserPage"
+import BasketPage from "./pages/BasketPage/BasketPage"
 
 import Layout from "./components/Layout/Layout";
 
@@ -16,6 +19,9 @@ function App() {
           <Route path="delivery" element={<Delivery />} />
           <Route path="about-us" element={<AboutUs />} />
           <Route path="news" element={<News />} />
+          <Route path="favourites" element={<Favourites />} />
+          <Route path="user-page" element={<UserPage />} />
+          <Route path="basket" element={<BasketPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

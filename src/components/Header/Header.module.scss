@@ -24,6 +24,10 @@
   display: flex;
   gap: 12px;
   margin-left: auto;
+
+  & a {
+    text-decoration: none;
+  }
 }
 
 .Icon {}

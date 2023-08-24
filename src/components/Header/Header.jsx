@@ -28,14 +28,14 @@ const Header = () => {
       <div className={styles.Buttons} >
         {isMoreThan768 && <>
           <NotificationButton notifications={2} />
-          <FavoriteButton />
-          <UserButton />
+          <Link to="favourites"><FavoriteButton /></Link>
+          <Link to="user-page"><UserButton /></Link>
         </>}
 
-        <BasketButton showText={isMoreThan768} />
+        <Link to="basket"><BasketButton showText={isMoreThan768} /></Link>
         {isLessThan1100 && <BurgerButton setOpen={setIsMenuOpen} />}
       </div>
-    </header>
+    </header >
   )
 }
 export default Header
