@@ -14,19 +14,26 @@ import styles from './Header.module.scss';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isMoreThan768 = useMediaQuery({ minWidth: 768 })
   const isLessThan993 = useMediaQuery({ maxWidth: 993 })
+  const isLessThan1100 = useMediaQuery({ maxWidth: 1100 })
   const isLessThan1200 = useMediaQuery({ maxWidth: 1200 })
 
   return (
     <header className={styles.Header} >
-      <Link to="/" className={styles.Logo} style={isLessThan1200 ? { marginRight: 2.8 + 'rem' } : {}}>Винни-пух</Link>
-      {<NavBar isOpen={isMenuOpen} setOpen={setIsMenuOpen} isShow={isLessThan993} />}
-      <div className={styles.Buttons}>
-        <NotificationButton notifications={2} />
-        <FavoriteButton />
-        <UserButton />
-        <BasketButton />
-        {isLessThan993 && <BurgerButton setOpen={setIsMenuOpen} />}
+      <Link to="/" className={styles.Logo} style={isLessThan1200 ? isLessThan993 ? { fontSize: 2.4 + 'rem', marginRight: 1 + 'rem' } : { marginRight: 2.8 + 'rem' } : {}}>
+        Винни-пух
+      </Link>
+      {<NavBar isOpen={isMenuOpen} setOpen={setIsMenuOpen} isShow={isLessThan1100} />}
+      <div className={styles.Buttons} >
+        {isMoreThan768 && <>
+          <NotificationButton notifications={2} />
+          <FavoriteButton />
+          <UserButton />
+        </>}
+
+        <BasketButton showText={isMoreThan768} />
+        {isLessThan1100 && <BurgerButton setOpen={setIsMenuOpen} />}
       </div>
     </header>
   )

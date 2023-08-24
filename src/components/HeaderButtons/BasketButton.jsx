@@ -2,10 +2,11 @@ import { ShoppingBag } from 'lucide-react';
 
 import styles from './Buttons.module.scss';
 
-const BasketButton = () => {
+const BasketButton = ({ showText, notifications }) => {
   return (
     <button className={styles.Button}>
-      <span className={styles.Text}>Корзина</span> <ShoppingBag />
+      {showText && <span className={styles.Text}>Корзина</span>}<ShoppingBag />
+      {notifications && <div className={styles.Notification}>{notifications}</div>}
     </button>
   )
 }
