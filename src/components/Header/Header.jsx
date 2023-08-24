@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 import NavBar from '../NavBar/NavBar';
-import NotificationButton from '../NotificationButton/NotificationButton';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import UserButton from '../UserButton/UserButton';
-import BasketButton from '../BasketButton/BasketButton';
-import BurgerButton from '../BurgerButton/BurgerButton';
+import NotificationButton from '../HeaderButtons/NotificationButton';
+import FavoriteButton from '../HeaderButtons/FavoriteButton';
+import UserButton from '../HeaderButtons/UserButton';
+import BasketButton from '../HeaderButtons/BasketButton';
+import BurgerButton from '../HeaderButtons/BurgerButton';
 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
 
   return (
     <header className={styles.Header} >

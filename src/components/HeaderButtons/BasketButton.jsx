@@ -1,6 +1,6 @@
 import { ShoppingBag } from 'lucide-react';
 
-import styles from './BasketButton.module.scss';
+import styles from './Buttons.module.scss';
 
 const BasketButton = () => {
   return (

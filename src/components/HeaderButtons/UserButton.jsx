@@ -1,5 +1,5 @@
 import { User } from 'lucide-react';
-import styles from './UserButton.module.scss';
+import styles from './Buttons.module.scss';
 
 const UserButton = () => {
   return (

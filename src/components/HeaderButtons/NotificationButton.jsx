@@ -1,5 +1,5 @@
 import { Bell } from 'lucide-react';
-import styles from './NotificationButton.module.scss';
+import styles from './Buttons.module.scss';
 
 const NotificationButton = (props) => {
   const { notifications } = props;

@@ -1,5 +1,5 @@
 import { Menu } from 'lucide-react';
-import styles from './BurgerButton.module.scss';
+import styles from './Buttons.module.scss';
 
 const BurgerButton = (props) => {
   const { setOpen } = props;
