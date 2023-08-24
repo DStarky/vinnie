@@ -5,7 +5,7 @@ import styles from './Buttons.module.scss';
 const BasketButton = () => {
   return (
     <button className={styles.Button}>
-      <ShoppingBag />
+      <span className={styles.Text}>Корзина</span> <ShoppingBag />
     </button>
   )
 }

@@ -13,12 +13,6 @@
   transition: color .2s ease, border .2s ease;
   position: relative;
 
-  & p {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.5;
-  }
-
   &:hover {
     border: 1px solid $color-main;
     color: $color-main;
@@ -44,4 +38,10 @@
 .BurgerButton {
   background-color: hsl(240, 11%, 96%);
   color: hsl(0, 0%, 0%);
+}
+
+.Text {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
