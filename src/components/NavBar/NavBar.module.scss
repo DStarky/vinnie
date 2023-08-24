@@ -2,7 +2,7 @@
 
 .Navigation {
   display: flex;
-  gap: 3rem;
+  gap: 2.4rem;
   list-style-type: none;
 }
 
@@ -30,9 +30,11 @@
 }
 
 .X {
+  display: block;
   position: fixed;
-  top: 10%;
+  top: -100%;
   right: 10%;
+  transition-duration: .25s;
   z-index: 1;
 }
 
@@ -91,9 +93,4 @@
       height: 100%;
     }
   }
-}
-
-.NavBar {
-  flex-grow: 1;
-
 }
