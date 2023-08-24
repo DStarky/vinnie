@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/pages/Home/Home";
-import NotFound from "./components/pages/NotFount/NotFound";
-import Delivery from "./components/pages/Delivery/Delivery";
-import AboutUs from "./components/pages/AboutUs/AboutUs";
-import News from "./components/pages/News/News";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFount/NotFound";
+import Delivery from "./pages/Delivery/Delivery";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import News from "./pages/News/News";
 
 import Layout from "./components/Layout/Layout";
 

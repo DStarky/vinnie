@@ -1,6 +1,6 @@
 const Delivery = () => {
   return (
-    <div>Delivery</div>
+    <h1>Delivery</h1>
   )
 }
 export default Delivery

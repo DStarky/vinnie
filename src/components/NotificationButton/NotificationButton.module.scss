@@ -23,24 +23,6 @@
     border: 1px solid $color-main;
     color: $color-main;
   }
-
-  @media screen and (max-width: 768px) {
-
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      display: none;
-    }
-
-  }
-
-  @media screen and (max-width: 576px) {
-
-    &:nth-child(4) {
-      display: none;
-    }
-
-  }
 }
 
 .Notification {
