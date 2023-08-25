@@ -7,6 +7,8 @@ import { Pagination } from 'swiper/modules';
 
 import styles from './Slider.module.scss'
 
+import SingleSlide from '../SingleSlide/SingleSlide';
+
 const Slider = () => {
   return (
     <>
@@ -17,7 +19,7 @@ const Slider = () => {
         modules={[Pagination]}
         className={`mySwiper ${styles.Swiper}`}
       >
-        <SwiperSlide className={styles.Slide}>Slide 1</SwiperSlide>
+        <SwiperSlide className={styles.Slide}><SingleSlide /></SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 2</SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 3</SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 4</SwiperSlide>
