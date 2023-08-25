@@ -14,28 +14,6 @@
   padding: 0 5%;
 }
 
-.ContentAbsolute {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0 5%;
-
-  & .Title {
-    color: white;
-    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
-
-    @media screen and (max-width: 768px) {
-      font-size: 4.8rem;
-    }
-  }
-
-  & .Text {
-    color: white;
-    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px)
-  }
-}
 
 .Title {
   color: $color-font-main;
@@ -56,7 +34,6 @@
 .Cover {
   height: 100%;
   width: 100%;
-  background-color: red;
 }
 
 .Image {
