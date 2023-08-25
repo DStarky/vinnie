@@ -19,7 +19,7 @@ const SingleSlide = () => {
           isMoreThan769
             ? <img src="images/slider-1.jpg" className={styles.Image} />
             : <Link to='delivery'>
-              <img src="images/slider-1-small.jpg" className={styles.Image} />
+              <img src="images/slider-1-small.png" className={styles.Image} />
             </Link>
         }
       </div>

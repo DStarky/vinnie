@@ -21,7 +21,7 @@ const Slider = () => {
         }}
         modules={[Pagination]}
         className={`mySwiper`}
-        style={isMoreThan769 ? { height: 686 + 'px' } : { height: 367 + 'px' }}
+        style={isMoreThan769 ? { height: 70 + 'vh' } : { height: 35 + 'vh' }}
       >
         <SwiperSlide className={styles.Slide}><SingleSlide /></SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 2</SwiperSlide>
