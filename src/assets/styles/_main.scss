@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.swiper-pagination-bullet-active {
+  background-color: $color-main !important;
+}
+
 
 ::selection {
   background: $color-main;
