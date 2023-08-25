@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -10,6 +11,8 @@ import styles from './Slider.module.scss'
 import SingleSlide from '../SingleSlide/SingleSlide';
 
 const Slider = () => {
+  const isMoreThan769 = useMediaQuery({ minWidth: 769 });
+
   return (
     <>
       <Swiper
@@ -17,7 +20,8 @@ const Slider = () => {
           dynamicBullets: true,
         }}
         modules={[Pagination]}
-        className={`mySwiper ${styles.Swiper}`}
+        className={`mySwiper`}
+        style={isMoreThan769 ? { height: 686 + 'px' } : { height: 367 + 'px' }}
       >
         <SwiperSlide className={styles.Slide}><SingleSlide /></SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 2</SwiperSlide>

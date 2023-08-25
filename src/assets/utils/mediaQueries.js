@@ -1,9 +1,9 @@
 // import { useMediaQuery } from 'react-responsive';
 
-// const isMoreThan1200 = useMediaQuery({ minWidth: 1200 })
-// const isMoreThan992 = useMediaQuery({ minWidth: 992 })
-// const isMoreThan768 = useMediaQuery({ minWidth: 768 })
-// const isMoreThan576 = useMediaQuery({ minWidth: 576 })
+// const isMoreThan1201 = useMediaQuery({ minWidth: 1201 })
+// const isMoreThan993 = useMediaQuery({ minWidth: 993 })
+// const isMoreThan769 = useMediaQuery({ minWidth: 769 })
+// const isMoreThan577 = useMediaQuery({ minWidth: 577 })
 // const isLessThan577 = useMediaQuery({ maxWidth: 577 })
 // const isLessThan769 = useMediaQuery({ maxWidth: 769 })
 // const isLessThan993 = useMediaQuery({ maxWidth: 993 })

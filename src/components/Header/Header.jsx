@@ -14,7 +14,7 @@ import styles from './Header.module.scss';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const isMoreThan768 = useMediaQuery({ minWidth: 768 })
+  const isMoreThan769 = useMediaQuery({ minWidth: 769 })
   const isLessThan993 = useMediaQuery({ maxWidth: 993 })
   const isLessThan1100 = useMediaQuery({ maxWidth: 1100 })
   const isLessThan1200 = useMediaQuery({ maxWidth: 1200 })
@@ -26,13 +26,13 @@ const Header = () => {
       </Link>
       {<NavBar isOpen={isMenuOpen} setOpen={setIsMenuOpen} isShow={isLessThan1100} />}
       <div className={styles.Buttons} >
-        {isMoreThan768 && <>
+        {isMoreThan769 && <>
           <NotificationButton notifications={2} />
           <Link to="favourites"><FavoriteButton /></Link>
           <Link to="user-page"><UserButton /></Link>
         </>}
 
-        <Link to="basket"><BasketButton showText={isMoreThan768} /></Link>
+        <Link to="basket"><BasketButton showText={isMoreThan769} /></Link>
         {isLessThan1100 && <BurgerButton setOpen={setIsMenuOpen} />}
       </div>
     </header >

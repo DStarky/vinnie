@@ -22,7 +22,7 @@
   list-style: none;
   background-color: $color-bg-gray;
   transition-duration: .4s;
-  z-index: 1;
+  z-index: 2;
 
   & a {
     font-size: 2.4rem;
@@ -35,7 +35,7 @@
   top: -100%;
   right: 10%;
   transition-duration: .5s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .Active {
