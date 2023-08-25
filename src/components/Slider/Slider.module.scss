@@ -1,0 +1,15 @@
+.Swiper {
+  height: 686px;
+}
+
+.Slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  border-radius: 24px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
