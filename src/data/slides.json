@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Бесплатная доставка",
+    "text": "Только до конца месяца",
+    "buttonText": "Перейти к новости",
+    "imageWide": "images/slider-1.jpg",
+    "imageSmall": "images/slider-1-small.png",
+    "linkTo": "delivery"
+  },
+  {
+    "id": 2,
+    "title": "Заходите в гости",
+    "text": "Посетите наше уютное кафе",
+    "buttonText": "Страница кафе",
+    "imageWide": "images/cafe.png",
+    "imageSmall": "images/cafe-small.png",
+    "linkTo": "about-us"
+  }
+]

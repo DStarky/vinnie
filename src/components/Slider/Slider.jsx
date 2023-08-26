@@ -10,6 +10,8 @@ import styles from './Slider.module.scss'
 
 import SingleSlide from '../SingleSlide/SingleSlide';
 
+import slides from '../../data/slides.json';
+
 const Slider = () => {
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
 
@@ -23,15 +25,14 @@ const Slider = () => {
         className={`mySwiper`}
         style={isMoreThan769 ? { height: 70 + 'vh' } : { height: 35 + 'vh' }}
       >
-        <SwiperSlide className={styles.Slide} style={isMoreThan769 ? { borderRadius: 2.4 + 'rem' } : {}}><SingleSlide /></SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 2</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 3</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 4</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 5</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 6</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 7</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 8</SwiperSlide>
-        <SwiperSlide className={styles.Slide}>Slide 9</SwiperSlide>
+        {slides.map(slide => {
+          return (
+            <SwiperSlide key={slide.id} className={styles.Slide} style={isMoreThan769 ? { borderRadius: 2.4 + 'rem' } : {}}>
+              <SingleSlide {...slide} />
+            </SwiperSlide>
+          )
+        })}
+
       </Swiper>
     </>
   );
