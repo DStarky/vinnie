@@ -1,17 +1,19 @@
+// Import libraries 
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
 
+// Import styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import { Pagination } from 'swiper/modules';
-
+// Import components and data
+import slides from '../../data/slides.json';
 import styles from './Slider.module.scss'
-
 import SingleSlide from '../SingleSlide/SingleSlide';
 
-import slides from '../../data/slides.json';
-
+// Compontent
 const Slider = () => {
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
 
@@ -21,7 +23,8 @@ const Slider = () => {
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Pagination, Navigation]}
         className={`mySwiper`}
         style={isMoreThan769 ? { height: 70 + 'vh' } : { height: 35 + 'vh' }}
       >
