@@ -23,7 +23,7 @@ const Slider = () => {
         className={`mySwiper`}
         style={isMoreThan769 ? { height: 70 + 'vh' } : { height: 35 + 'vh' }}
       >
-        <SwiperSlide className={styles.Slide}><SingleSlide /></SwiperSlide>
+        <SwiperSlide className={styles.Slide} style={isMoreThan769 ? { borderRadius: 2.4 + 'rem' } : {}}><SingleSlide /></SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 2</SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 3</SwiperSlide>
         <SwiperSlide className={styles.Slide}>Slide 4</SwiperSlide>
