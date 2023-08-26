@@ -21,7 +21,7 @@ const Header = () => {
   const isLessThan1200 = useMediaQuery({ maxWidth: 1200 })
 
   return (
-    <header className={styles.Header} style={isLessThan768 ? {borderRadius: 0} : {}}>
+    <header className={styles.Header} style={isLessThan768 ? { borderRadius: 0, marginBottom: 0 + 'rem' } : { marginBottom: 2 + 'rem' }}>
       <Link to="/" className={styles.Logo} style={isLessThan1200 ? isLessThan993 ? { fontSize: 2.4 + 'rem', marginRight: 1 + 'rem' } : { marginRight: 2.8 + 'rem' } : {}}>
         Винни-пух
       </Link>
