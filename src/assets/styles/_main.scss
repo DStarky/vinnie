@@ -34,6 +34,10 @@ body {
   background-color: $color-bg-gray;
   padding: 3rem 0;
   color: $color-font-main;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 }
 
 code {
@@ -45,4 +49,8 @@ code {
   max-width: 163.6rem;
   padding: 0 3rem;
   margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 }
