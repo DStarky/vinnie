@@ -3,9 +3,9 @@ import styles from './CardButtons.module.scss';
 
 const AddFavourite = () => {
   return (
-    <div className={styles.Favourite}>
+    <button className={styles.Favourite}>
       <Heart />
-    </div>
+    </button>
   );
 };
 export default AddFavourite;

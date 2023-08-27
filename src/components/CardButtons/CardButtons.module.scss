@@ -1,20 +1,35 @@
 @import '../../assets/styles/variables';
 
-.Basket {
-  padding: 1rem 2.4rem;
-  background-color: $color-main;
-  color: $color-bg-white;
-  border-radius: 1.2rem;
+.Basket,
+.Favourite {
+  border: none;
+  outline: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.Basket {
+  padding: 1.2rem 2.4rem;
+  background-color: $color-main;
+  color: $color-bg-white;
+  border-radius: 1.2rem;
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: brightness(1.1)
+  }
+}
+
 .Favourite {
   padding: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: $color-bg-gray;
   border-radius: 1.2rem;
+  transition: color .3s ease, background-color .3s ease;
+
+  &:hover {
+    color: $color-bg-white;
+    background-color: $color-main;
+  }
 }
