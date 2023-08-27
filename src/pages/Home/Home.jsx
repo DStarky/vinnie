@@ -1,8 +1,16 @@
-import { useState } from "react";
-import Categories from "../../components/Categories/Categories";
-import Slider from "../../components/Slider/Slider";
+import { useState } from 'react';
+import Categories from '../../components/Categories/Categories';
+import Slider from '../../components/Slider/Slider';
 
-const categories = ['Все', 'Новинки', 'Выпечка', 'Пирожные', 'Без сахара', 'Торты', 'Печенье'];
+const categories = [
+  'Все',
+  'Новинки',
+  'Выпечка',
+  'Пирожные',
+  'Без сахара',
+  'Торты',
+  'Печенье',
+];
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -10,8 +18,12 @@ const Home = () => {
   return (
     <>
       <Slider />
-      <Categories categories={categories} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <Categories
+        categories={categories}
+        activeIndex={activeIndex}
+        setActiveIndex={setActiveIndex}
+      />
     </>
-  )
-}
-export default Home
+  );
+};
+export default Home;
