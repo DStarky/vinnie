@@ -1,5 +1,7 @@
 import { Heart, Plus } from 'lucide-react';
 import styles from './Card.module.scss';
+import AddFavourite from '../CardButtons/AddFavourite';
+import AddBasket from '../CardButtons/AddBasket';
 
 const Card = (props) => {
   const { name, price, category, image, properties, weight, id, description } =
@@ -9,7 +11,13 @@ const Card = (props) => {
       {properties && (
         <ul className={styles.Properties}>
           {properties.map((property, index) => {
-            return <li className={styles.Property} key={index}>{property}</li>;
+            return (
+              <li
+                className={styles.Property}
+                key={index}>
+                {property}
+              </li>
+            );
           })}
         </ul>
       )}
@@ -27,8 +35,8 @@ const Card = (props) => {
         <p className={styles.Price}>
           <span>{price}</span> руб.
         </p>
-        <Heart />
-        <Plus />
+        <AddFavourite />
+        <AddBasket />
       </div>
     </li>
   );

@@ -31,6 +31,7 @@
   height: 290px;
   overflow: hidden;
   margin-bottom: 1.2rem;
+  border-radius: .4rem;
 }
 
 .Image {
@@ -67,4 +68,23 @@
 .Bottom {
   margin-top: auto;
   display: flex;
+  align-items: end;
+  gap: 1.2rem;
+
+  & p {
+    flex-grow: 1;
+  }
+}
+
+.Price {
+  color: $color-font-gray;
+  font-size: 2.6rem;
+  font-weight: 700;
+
+  & span {
+    color: $color-font-main;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 0.8;
+  }
 }
