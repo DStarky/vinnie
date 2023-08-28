@@ -40,7 +40,7 @@ const Card = (props) => {
           />
         </div>
       </Link>
-      <Link to={`production/${slug}`}>
+      <Link to={`production/${slug}`} className={styles.Link}>
         <h3 className={styles.Name}>{name}</h3>
       </Link>
       <p className={styles.Weight}>Вес: {weight}</p>
