@@ -37,13 +37,16 @@
   transition: color .3s ease, background-color .3s ease;
   color: $color-font-main;
 
-  &:hover {
-    color: $color-bg-white;
-    background-color: $color-main;
-  }
 
   &.Active {
     color: $color-bg-white;
     background-color: $color-main;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-bg-white;
+      background-color: $color-main;
+    }
   }
 }
