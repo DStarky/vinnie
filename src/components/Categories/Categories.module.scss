@@ -25,8 +25,8 @@
   padding: 1.2rem 2.4rem;
   background-color: $color-bg-white;
   border-radius: 4rem;
-  flex: 0 0 auto; /* Определяем размер элементов */
-  scroll-snap-align: start; /* Выравнивание элементов к началу якоря */
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .ActiveCategory {
