@@ -7,17 +7,8 @@ const AddBasket = () => {
 
   return (
     <button
-      className={styles.Basket}
-      style={
-        isActive
-          ? {
-              backgroundColor: 'white',
-              outline: '1px solid hsl(328, 92%, 47%)',
-              color: 'hsl(328, 92%, 47%)',
-            }
-          : {}
-      }
-      onClick={() => setIsActive(true)}>
+      className={`${styles.Basket} ${isActive ? styles.Active : ''}`}
+      onClick={() => setIsActive((prev) => !prev)}>
       <Plus />
     </button>
   );
