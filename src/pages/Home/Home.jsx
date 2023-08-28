@@ -20,7 +20,8 @@ const Home = () => {
   useEffect(() => {
     fetch('https://64e5c4a909e64530d17efcf9.mockapi.io/productions')
       .then((data) => data.json())
-      .then((cakes) => setCakes(cakes));
+      .then((cakes) => setCakes(cakes))
+      .catch((e) => console.log(e));
   }, []);
 
   return (
