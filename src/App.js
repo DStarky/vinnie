@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFount/NotFound";
 import Delivery from "./pages/Delivery/Delivery";
@@ -7,8 +8,8 @@ import News from "./pages/News/News";
 import Favourites from "./pages/Favourites/Favourites"
 import UserPage from "./pages/UserPage/UserPage"
 import BasketPage from "./pages/BasketPage/BasketPage"
+import SingleProduct from "./pages/SingleProduct/SingleProduct";
 
-import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="favourites" element={<Favourites />} />
           <Route path="user-page" element={<UserPage />} />
           <Route path="basket" element={<BasketPage />} />
+          <Route path="production/:slug" element={<SingleProduct />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
