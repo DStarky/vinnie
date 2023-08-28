@@ -6,6 +6,7 @@
   display: flex;
   gap: 1.2rem;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   /* Скрываем стандартный скролл-бар в большинстве современных браузеров */
   -ms-overflow-style: none;
@@ -24,7 +25,8 @@
   padding: 1.2rem 2.4rem;
   background-color: $color-bg-white;
   border-radius: 4rem;
-  flex-shrink: 0;
+  flex: 0 0 auto; /* Определяем размер элементов */
+  scroll-snap-align: start; /* Выравнивание элементов к началу якоря */
 }
 
 .ActiveCategory {
