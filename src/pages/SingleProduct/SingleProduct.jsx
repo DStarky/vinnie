@@ -20,7 +20,10 @@ const SingleProduct = () => {
       {cake && (
         <article className={styles.Page}>
           <div className={styles.Cover}>
-            <img src={cake.image} className={styles.Image}/>
+            <img
+              src={cake.image}
+              className={styles.Image}
+            />
           </div>
           <div className={styles.Content}>
             <ul className={styles.Properties}>
@@ -34,8 +37,10 @@ const SingleProduct = () => {
                 );
               })}
             </ul>
-            <h2 className={styles.Nmae}>{cake.name}</h2>
-            <p className={styles.Weight}>Вес: {cake.weight}</p>
+            <h2 className={styles.Name}>{cake.name}</h2>
+            <p className={styles.Weight}>
+              Вес: <span>{cake.weight}</span>
+            </p>
             <p className={styles.Description}>{cake.description}</p>
             <p className={styles.Price}>
               <span>{cake.price}</span> руб.
