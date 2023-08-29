@@ -20,7 +20,7 @@ const SingleProduct = () => {
       {cake && (
         <article className={styles.Page}>
           <div className={styles.Cover}>
-            <img src={cake.image} />
+            <img src={cake.image} className={styles.Image}/>
           </div>
           <div className={styles.Content}>
             <ul className={styles.Properties}>
