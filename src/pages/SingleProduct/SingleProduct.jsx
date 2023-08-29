@@ -16,7 +16,26 @@ const SingleProduct = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  return <div>{cake ? cake.name : <h1>Page Not Found</h1>}</div>;
+  return (
+    <>
+      {cake ? (
+        <article className={styles.Page}>
+          <div className={styles.Cover}>
+            <img src={cake.image} />
+          </div>
+          <div className={styles.Content}>
+            <ul className={styles.Properties}>
+              {cake.properties.map((property, index) => {
+                <li key={index}>{property}</li>;
+              })}
+            </ul>
+          </div>
+        </article>
+      ) : (
+        <h1>Page Not Found</h1>
+      )}
+    </>
+  );
 };
 
 export default SingleProduct;
