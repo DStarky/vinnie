@@ -84,31 +84,3 @@
     line-height: 0.8;
   }
 }
-
-.Count{
-  max-width: 15rem;
-  font-size: 2.4rem;
-  margin-bottom: 2.4rem;
-}
-
-.Input{
-  max-width: 9rem;
-  height: 2.2rem;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  text-align: center;
-}
-
-.Minus,
-.Plus{
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: color .3s ease;
-
-  &:hover{
-    color: $color-main;
-  }
-}
