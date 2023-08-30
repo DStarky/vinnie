@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 import ProductCount from '../../components/ProductCount/ProductCount';
@@ -23,47 +23,52 @@ const SingleProduct = () => {
   return (
     <>
       {cake && (
-        <article className={styles.Page}>
-          <div className={styles.Cover}>
-            <img
-              src={cake.image}
-              className={styles.Image}
-            />
-          </div>
-          <div className={styles.Content}>
-            <ul className={styles.Properties}>
-              {cake.properties?.map((property, index) => {
-                return (
-                  <li
-                    className={styles.Property}
-                    key={index}>
-                    {property}
-                  </li>
-                );
-              })}
-            </ul>
-            <h2 className={styles.Name}>{cake.name}</h2>
-            <p className={styles.Price}>
-              <span>{cake.price}</span> руб.
-            </p>
-            <div className={styles.AddToBasket}>
-              <ProductCount
-                count={count}
-                setCount={setCount}
+        <div className={styles.Container}>
+          <p className={styles.BreadCrumbs}>
+            <Link to='/'>Главная</Link> / {cake.category} / {cake.name}
+          </p>
+          <article className={styles.Page}>
+            <div className={styles.Cover}>
+              <img
+                src={cake.image}
+                className={styles.Image}
               />
-              <button
-                className={`${styles.AddButton} 
-                ${isButtonActive ? styles.Active : ''}`}
-                onClick={() => setIsButtonActive((prev) => !prev)}>
-                {isButtonActive ? 'Удалить из корзины' : 'Добавить в корзину'}
-              </button>
             </div>
-            <p className={styles.Weight}>
-              Вес: <span>{cake.weight}</span>
-            </p>
-            <p className={styles.Description}>{cake.description}</p>
-          </div>
-        </article>
+            <div className={styles.Content}>
+              <ul className={styles.Properties}>
+                {cake.properties?.map((property, index) => {
+                  return (
+                    <li
+                      className={styles.Property}
+                      key={index}>
+                      {property}
+                    </li>
+                  );
+                })}
+              </ul>
+              <h2 className={styles.Name}>{cake.name}</h2>
+              <p className={styles.Price}>
+                <span>{cake.price}</span> руб.
+              </p>
+              <div className={styles.AddToBasket}>
+                <ProductCount
+                  count={count}
+                  setCount={setCount}
+                />
+                <button
+                  className={`${styles.AddButton} 
+                ${isButtonActive ? styles.Active : ''}`}
+                  onClick={() => setIsButtonActive((prev) => !prev)}>
+                  {isButtonActive ? 'Удалить из корзины' : 'Добавить в корзину'}
+                </button>
+              </div>
+              <p className={styles.Weight}>
+                Вес: <span>{cake.weight}</span>
+              </p>
+              <p className={styles.Description}>{cake.description}</p>
+            </div>
+          </article>
+        </div>
       )}
     </>
   );
