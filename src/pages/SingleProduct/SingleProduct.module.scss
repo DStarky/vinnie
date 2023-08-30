@@ -3,7 +3,9 @@
 
 .Page {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -26,7 +28,7 @@
 
 
 .Cover {
-  flex: 1 1 600;
+  flex: 1 1 100%;
   max-height: 42rem;
   overflow: hidden;
   display: flex;
@@ -54,6 +56,10 @@
   margin-bottom: 1.2rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid hsl(0, 0%, 80%);
+
+  @media screen and (max-width: 576px) {
+    font-size: 3.6rem;
+  }
 }
 
 .Weight {
@@ -68,6 +74,7 @@
   color: $color-font-gray;
   margin-bottom: 2.4rem;
   max-width: 60rem;
+  font-size: 2rem;
 }
 
 .Price {
