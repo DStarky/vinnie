@@ -79,7 +79,7 @@ const SingleProduct = () => {
             </div>
           </article>
           <div className={styles.Similar}>
-            <h3>Другие товары из этой категории:</h3>
+            <h3 className={styles.FromCategory}>Другие товары из этой категории:</h3>
             <Production cakes={similar} />
           </div>
         </div>

@@ -5,12 +5,12 @@
   margin: 0 auto;
 }
 
-.BreadCrumbs{
+.BreadCrumbs {
   color: $color-font-gray;
   font-size: 1.2rem;
   margin: 1.2rem 0;
 
-  & a{
+  & a {
     text-decoration: none;
     color: $color-font-gray;
   }
@@ -22,7 +22,7 @@
 
 .Page {
   display: flex;
-  gap: 4rem;
+  gap: 2.4rem 4rem;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -89,7 +89,6 @@
 
 .Description {
   color: $color-font-gray;
-  margin-bottom: 2.4rem;
   max-width: 60rem;
   font-size: 2rem;
 }
@@ -140,8 +139,12 @@
   }
 }
 
-.Similar{
-  & h3{
+.Similar {
+  & .FromCategory {
     margin: 2.4rem 0;
+
+    @media screen and (max-width: 768px) {
+      margin: 2.4rem;
+    }
   }
 }
