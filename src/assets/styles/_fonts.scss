@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Montserrat';
-  src: local('Montserrat Black'), local('Montserrat-Black'),
-    url('../fonts/Montserrat-Black.woff2') format('woff2'),
+  src: url('../fonts/Montserrat-Black.woff2') format('woff2'),
     url('../fonts/Montserrat-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
@@ -10,8 +9,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: local('Inter Medium'), local('Inter-Medium'),
-    url('../fonts/Inter-Medium.woff2') format('woff2'),
+  src: url('../fonts/Inter-Medium.woff2') format('woff2'),
     url('../fonts/Inter-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
@@ -20,8 +18,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: local('Inter Regular'), local('Inter-Regular'),
-    url('../fonts/Inter-Regular.woff2') format('woff2'),
+  src: url('../fonts/Inter-Regular.woff2') format('woff2'),
     url('../fonts/Inter-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -30,8 +27,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: local('Inter Bold'), local('Inter-Bold'),
-    url('../fonts/Inter-Bold.woff2') format('woff2'),
+  src: url('../fonts/Inter-Bold.woff2') format('woff2'),
     url('../fonts/Inter-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;

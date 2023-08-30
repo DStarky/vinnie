@@ -25,6 +25,20 @@
   color: #fff;
 }
 
+// Убираем стрелки из input type number
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
 html {
   /* 10px */
   font-size: 62.5%;

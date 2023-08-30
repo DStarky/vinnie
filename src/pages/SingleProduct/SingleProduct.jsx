@@ -38,13 +38,18 @@ const SingleProduct = () => {
               })}
             </ul>
             <h2 className={styles.Name}>{cake.name}</h2>
+            <p className={styles.Price}>
+              <span>{cake.price}</span> руб.
+            </p>
+            <div className={styles.Count}>
+              <button className={styles.Minus}>-</button>
+              <input type='number' value={1} className={styles.Input}></input>
+              <button className={styles.Plus}>+</button>
+            </div>
             <p className={styles.Weight}>
               Вес: <span>{cake.weight}</span>
             </p>
             <p className={styles.Description}>{cake.description}</p>
-            <p className={styles.Price}>
-              <span>{cake.price}</span> руб.
-            </p>
           </div>
         </article>
       )}
