@@ -3,11 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 import ProductCount from '../../components/ProductCount/ProductCount';
-import AddBasket from '../../components/CardButtons/AddBasket';
+import Production from '../../components/Production/Production';
 
 const SingleProduct = () => {
   const { slug } = useParams();
   const [cake, setCake] = useState({});
+  const [similar, setSimilar] = useState([]);
   const [count, setCount] = useState(1);
   const [isButtonActive, setIsButtonActive] = useState(false);
 
@@ -19,6 +20,15 @@ const SingleProduct = () => {
       .then((cake) => setCake(cake[0]))
       .catch((e) => console.log(e));
   }, []);
+
+  useEffect(() => {
+    fetch(
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}`,
+    )
+      .then((data) => data.json())
+      .then((cakes) => setSimilar(cakes))
+      .catch((e) => console.log(e));
+  }, [cake]);
 
   return (
     <>
@@ -68,6 +78,10 @@ const SingleProduct = () => {
               <p className={styles.Description}>{cake.description}</p>
             </div>
           </article>
+          <div className={styles.Similar}>
+            <h3>Другие товары из этой категории:</h3>
+            <Production cakes={similar} />
+          </div>
         </div>
       )}
     </>
