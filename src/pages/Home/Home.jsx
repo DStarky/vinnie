@@ -3,15 +3,7 @@ import Categories from '../../components/Categories/Categories';
 import Slider from '../../components/Slider/Slider';
 import Production from '../../components/Production/Production';
 
-const categories = [
-  'Все',
-  'Новинки',
-  'Выпечка',
-  'Пирожные',
-  'Без сахара',
-  'Торты',
-  'Печенье',
-];
+import categories from '../../data/categories.json';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
