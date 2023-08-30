@@ -1,4 +1,3 @@
-import { Heart, Plus } from 'lucide-react';
 import styles from './Card.module.scss';
 import AddFavourite from '../CardButtons/AddFavourite';
 import AddBasket from '../CardButtons/AddBasket';

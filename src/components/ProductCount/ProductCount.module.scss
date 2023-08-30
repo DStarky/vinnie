@@ -3,7 +3,8 @@
 .Count {
   max-width: 15rem;
   font-size: 2.4rem;
-  margin-bottom: 2.4rem;
+  display: flex;
+  align-items: center;
 }
 
 .Input {
@@ -13,6 +14,7 @@
   outline: none;
   background-color: transparent;
   text-align: center;
+  vertical-align: middle;
 }
 
 
@@ -26,12 +28,16 @@
   cursor: pointer;
   transition: color .3s ease;
 
-  &:hover {
-    color: $color-main;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-main;
+    }
   }
+
 }
 
-.Disable{
+.Disable {
   pointer-events: none;
   color: $color-font-gray;
 }

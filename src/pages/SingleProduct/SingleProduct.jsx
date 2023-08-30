@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 import ProductCount from '../../components/ProductCount/ProductCount';
+import AddBasket from '../../components/CardButtons/AddBasket';
 
 const SingleProduct = () => {
   const { slug } = useParams();
   const [cake, setCake] = useState({});
   const [count, setCount] = useState(1);
-
+  const [isButtonActive, setIsButtonActive] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -45,7 +46,18 @@ const SingleProduct = () => {
             <p className={styles.Price}>
               <span>{cake.price}</span> руб.
             </p>
-            <ProductCount count={count} setCount={setCount}/>
+            <div className={styles.AddToBasket}>
+              <ProductCount
+                count={count}
+                setCount={setCount}
+              />
+              <button
+                className={`${styles.AddButton} 
+                ${isButtonActive ? styles.Active : ''}`}
+                onClick={() => setIsButtonActive((prev) => !prev)}>
+                {isButtonActive ? 'Удалить из корзины' : 'Добавить в корзину'}
+              </button>
+            </div>
             <p className={styles.Weight}>
               Вес: <span>{cake.weight}</span>
             </p>
