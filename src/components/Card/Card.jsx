@@ -1,20 +1,10 @@
+import { Link } from 'react-router-dom';
 import styles from './Card.module.scss';
 import AddFavourite from '../CardButtons/AddFavourite';
 import AddBasket from '../CardButtons/AddBasket';
-import { Link } from 'react-router-dom';
 
 const Card = (props) => {
-  const {
-    name,
-    price,
-    category,
-    image,
-    properties,
-    weight,
-    id,
-    description,
-    slug,
-  } = props;
+  const { name, price, image, properties, weight, description, slug } = props;
   return (
     <li className={styles.Card}>
       {properties && (
@@ -39,7 +29,9 @@ const Card = (props) => {
           />
         </div>
       </Link>
-      <Link to={`production/${slug}`} className={styles.Link}>
+      <Link
+        to={`production/${slug}`}
+        className={styles.Link}>
         <h3 className={styles.Name}>{name}</h3>
       </Link>
       <p className={styles.Weight}>Вес: {weight}</p>

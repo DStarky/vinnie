@@ -41,6 +41,7 @@ const SingleProduct = () => {
             <div className={styles.Cover}>
               <img
                 src={cake.image}
+                alt={cake.name}
                 className={styles.Image}
               />
             </div>
