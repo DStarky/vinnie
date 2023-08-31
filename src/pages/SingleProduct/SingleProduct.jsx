@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import styles from './SingleProduct.module.scss';
 import ProductCount from '../../components/ProductCount/ProductCount';
 import Production from '../../components/Production/Production';
+import NotFound from '../../pages/NotFound/NotFound';
 
 const SingleProduct = () => {
   const { slug } = useParams();
@@ -19,27 +20,36 @@ const SingleProduct = () => {
     )
       .then((data) => data.json())
       .then((cake) => {
-        setCake(cake[0]);
-        setIsLoading(false);
+        if (cake) {
+          setCake(cake[0]);
+          setIsLoading(false);
+        }
       })
       .catch((e) => console.log(e));
   }, []);
 
   useEffect(() => {
-    fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}&page=1&limit=3`,
-    )
-      .then((data) => data.json())
-      .then((cakes) => setSimilar(cakes))
-      .catch((e) => console.log(e));
+    if (cake) {
+      fetch(
+        `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}&page=1&limit=3`,
+      )
+        .then((data) => data.json())
+        .then((cakes) => setSimilar(cakes))
+        .catch((e) => console.log(e));
+    }
   }, [cake]);
+
+  if (!cake) {
+    return <NotFound />;
+  }
 
   return (
     <>
-      {isLoading ? <div className={styles.LoadingParent}>
-        <div className={styles.Loading}></div> 
-      </div>
-      :(
+      {isLoading ? (
+        <div className={styles.LoadingParent}>
+          <div className={styles.Loading}></div>
+        </div>
+      ) : (
         <div className={styles.Container}>
           <p className={styles.BreadCrumbs}>
             <Link to='/'>Главная</Link> / {cake.category} / {cake.name}
