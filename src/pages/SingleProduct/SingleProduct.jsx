@@ -15,6 +15,7 @@ const SingleProduct = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?slug=${slug}`,
     )
