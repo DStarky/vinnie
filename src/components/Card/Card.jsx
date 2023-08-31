@@ -20,7 +20,9 @@ const Card = (props) => {
           })}
         </ul>
       )}
-      <Link to={`production/${slug}`}>
+      <Link
+        to={`/production/${slug}`}
+        relative='path'>
         <div className={styles.Cover}>
           <img
             className={styles.Image}
@@ -30,7 +32,7 @@ const Card = (props) => {
         </div>
       </Link>
       <Link
-        to={`production/${slug}`}
+        to={`/production/${slug}`}
         className={styles.Link}>
         <h3 className={styles.Name}>{name}</h3>
       </Link>

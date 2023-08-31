@@ -23,7 +23,7 @@ function App() {
           <Route path="favourites" element={<Favourites />} />
           <Route path="user-page" element={<UserPage />} />
           <Route path="basket" element={<BasketPage />} />
-          <Route path="production/:slug" element={<SingleProduct />} />
+          <Route path="/production/:slug" element={<SingleProduct />}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

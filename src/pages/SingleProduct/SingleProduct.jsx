@@ -26,7 +26,7 @@ const SingleProduct = () => {
         }
       })
       .catch((e) => console.log(e));
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     if (cake) {
