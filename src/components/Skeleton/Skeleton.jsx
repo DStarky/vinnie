@@ -7,8 +7,8 @@ const Skeleton = (props) => (
     width={380}
     height={600}
     viewBox='0 0 380 600'
-    backgroundColor='#b0b0b0'
-    foregroundColor='#e60a7f'
+    backgroundColor='#d8d8d8'
+    foregroundColor='#cf96b3'
     {...props}>
     <rect
       x='37'

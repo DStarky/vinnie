@@ -11,13 +11,17 @@ const SingleProduct = () => {
   const [similar, setSimilar] = useState([]);
   const [count, setCount] = useState(1);
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?slug=${slug}`,
     )
       .then((data) => data.json())
-      .then((cake) => setCake(cake[0]))
+      .then((cake) => {
+        setCake(cake[0]);
+        setIsLoading(false);
+      })
       .catch((e) => console.log(e));
   }, []);
 
@@ -32,7 +36,10 @@ const SingleProduct = () => {
 
   return (
     <>
-      {cake && (
+      {isLoading ? <div className={styles.LoadingParent}>
+        <div className={styles.Loading}></div> 
+      </div>
+      :(
         <div className={styles.Container}>
           <p className={styles.BreadCrumbs}>
             <Link to='/'>Главная</Link> / {cake.category} / {cake.name}

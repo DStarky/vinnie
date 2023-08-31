@@ -7,9 +7,9 @@ const Production = (props) => {
 
   return (
     <ul className={styles.Production}>
-      {cakes.map((cake) => {
+      {cakes.map((cake, index) => {
         return isLoading ? (
-          <Skeleton /> 
+          <Skeleton key={index} /> 
           ) : (
           <Card
             {...cake}
