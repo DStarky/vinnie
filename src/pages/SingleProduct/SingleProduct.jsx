@@ -23,7 +23,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}&page=1&limit=3`,
     )
       .then((data) => data.json())
       .then((cakes) => setSimilar(cakes))
@@ -80,7 +80,9 @@ const SingleProduct = () => {
             </div>
           </article>
           <div className={styles.Similar}>
-            <h3 className={styles.FromCategory}>Другие товары из этой категории:</h3>
+            <h3 className={styles.FromCategory}>
+              Другие товары из этой категории:
+            </h3>
             <Production cakes={similar} />
           </div>
         </div>
