@@ -18,7 +18,7 @@ const Categories = (props) => {
               activeIndex === index ? styles.ActiveCategory : ''
             }`}
             onClick={() => setActiveIndex(index)}>
-            {category}
+            {category.name}
           </li>
         );
       })}
