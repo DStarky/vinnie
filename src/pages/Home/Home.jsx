@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-
 //import styles
 import styles from './Home.module.scss';
 
@@ -18,7 +16,6 @@ const Home = () => {
   const [cakes, setCakes] = useState(new Array(4).fill(null));
   const [isLoading, setIsLoading] = useState(true);
 
-  const isMoreThan769 = useMediaQuery({ minWidth: 769 })
 
   useEffect(() => {
     fetch(
@@ -34,15 +31,13 @@ const Home = () => {
 
   return (
     <>
+      <Search />
       <Slider />
-      <div className={styles.Horizontal}>
-        {isMoreThan769 && <Search />}
         <Categories
           categories={categories}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         />
-      </div>
       <Production
         cakes={cakes}
         isLoading={isLoading}

@@ -26,7 +26,7 @@ const Slider = () => {
         navigation={true}
         modules={[Pagination, Navigation]}
         className={`mySwiper`}
-        style={isMoreThan769 ? { height: 70 + 'vh' } : { height: 35 + 'vh' }}
+        style={isMoreThan769 ? { height: 50 + 'vh' } : { height: 35 + 'vh' }}
       >
         {slides.map(slide => {
           return (
