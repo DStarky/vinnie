@@ -31,13 +31,13 @@ const Home = () => {
 
   return (
     <>
-      <Search />
       <Slider />
         <Categories
           categories={categories}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         />
+      <Search />
       <Production
         cakes={cakes}
         isLoading={isLoading}
