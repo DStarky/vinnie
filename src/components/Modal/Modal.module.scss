@@ -1,0 +1,28 @@
+@import '../../assets/styles/variables';
+
+.Modal {
+  position: absolute;
+  top: 7rem;
+  right: 0;
+
+  background-color: $color-bg-white;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+
+  width: 25rem;
+  z-index: 2;
+
+  & ul {
+    list-style: none;
+  }
+
+  & li {
+    text-align: left;
+    padding: 1.2rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-bg-gray;
+    }
+  }
+
+}
