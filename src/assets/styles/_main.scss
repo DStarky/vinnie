@@ -75,3 +75,20 @@ code {
     padding: 0;
   }
 }
+
+.page-wrapper {
+  background-color: $color-bg-white;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+  & *:not(:last-child){
+    margin-bottom: 1.2em;
+  }
+
+  & ul{
+    list-style-type: disclosure-closed;
+  }
+
+  & li{
+    margin-left: 2rem;
+  }
+}
