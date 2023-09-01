@@ -13,9 +13,11 @@
   transition: color .2s ease, border .2s ease;
   position: relative;
 
-  &:hover {
-    border: 1px solid $color-main;
-    color: $color-main;
+  @media (any-hover: hover) {
+    &:hover {
+      border: 1px solid $color-main;
+      color: $color-main;
+    }
   }
 }
 
@@ -44,5 +46,31 @@
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
+}
+
+.Modal {
+  position: absolute;
+  top: 7rem;
+  right: 0;
+
+  background-color: $color-bg-white;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+
+  width: 25rem;
+  z-index: 2;
+
+  & ul {
+    list-style: none;
+  }
+
+  & li {
+    text-align: left;
+    padding: 1.2rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-bg-gray;
+    }
+  }
 
 }
