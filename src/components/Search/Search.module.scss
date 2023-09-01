@@ -1,0 +1,39 @@
+@import '../../assets/styles/variables';
+
+.Root{
+  position: relative;
+
+  &::before{
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+
+    background-image: url('./search.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+  }
+}
+
+.Input {
+  flex-shrink: 1;
+  padding: 1.2rem;
+  padding-left: 3.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 3rem;
+  position: relative;
+
+  &:focus {
+    border: 1px solid rgba($color-main, 0.4);
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
