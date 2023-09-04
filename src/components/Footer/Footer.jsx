@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import NavBar from '../NavBar/NavBar';
+import { FaTelegram, FaVk, FaInstagram } from 'react-icons/fa'; // Подключение иконок
 
 const Footer = () => {
   return (
@@ -11,11 +11,54 @@ const Footer = () => {
         Винни-пух
       </Link>
       <div className={styles.Navigation}>
-        <NavBar />
+        <h3>Навигация:</h3>
+        <ul>
+          <li>
+            <Link to='/'>Главная</Link>
+          </li>
+          <li>
+            <Link to='/menu'>Меню</Link>
+          </li>
+          <li>
+            <Link to='/delivery'>Доставка</Link>
+          </li>
+          <li>
+            <Link to='/jobs'>Вакансии</Link>
+          </li>
+          <li>
+            <Link to='/news'>Новости</Link>
+          </li>
+        </ul>
       </div>
-      <div className={styles.Checkout}>123</div>
-      <div className={styles.Worktime}>321</div>
-      <div className={styles.Social}>231</div>
+      <div className={styles.Checkout}>
+        <h3>Оформить заказ:</h3>
+        <p>
+          Телефон: <a href='tel:+73532307536'>+7 (3532) 30-75-36</a>,{' '}
+          <a href='tel:+73532307010'>30-70-10</a>
+        </p>
+        <p>
+          Email:{' '}
+          <a href='mailto:winnipuhtort@yandex.ru'>winnipuhtort@yandex.ru</a>
+        </p>
+      </div>
+      <div className={styles.Worktime}>
+        <h3>Время работы:</h3>
+        <p>Заказы на доставку принимаются с 9:00 до 22:00</p>
+      </div>
+      <div className={styles.Social}>
+        <h3>Мы в соц. сетях:</h3>
+        <div className={styles.SocialIcons}>
+          <a href='#'>
+            <FaTelegram />
+          </a>
+          <a href='#'>
+            <FaVk />
+          </a>
+          <a href='#'>
+            <FaInstagram />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

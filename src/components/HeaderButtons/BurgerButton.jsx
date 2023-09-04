@@ -1,4 +1,4 @@
-import { Menu } from 'lucide-react';
+import { LuMenu } from 'react-icons/lu';
 import styles from './Buttons.module.scss';
 
 const BurgerButton = (props) => {
@@ -6,7 +6,7 @@ const BurgerButton = (props) => {
 
   return (
     <button className={`${styles.Button} ${styles.BurgerButton}`} onClick={() => setOpen(true)}>
-      <Menu />
+      <LuMenu size='24px'/>
     </button>
   )
 }

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Bell } from 'lucide-react';
+import { LuBell } from 'react-icons/lu';
 import Modal from '../Modal/Modal';
 import styles from './Buttons.module.scss';
 import notifications from '../../data/notifications.json';
@@ -39,7 +39,7 @@ const NotificationButton = () => {
         className={styles.Button}
         onClick={showModal}
         ref={buttonRef}>
-        <Bell />
+        <LuBell size='24px'/>
         {notificationsCount > 0 && !isShow && (
           <div className={styles.Notification}>{notificationsCount}</div>
         )}

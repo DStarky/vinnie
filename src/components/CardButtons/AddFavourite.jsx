@@ -1,4 +1,4 @@
-import { Heart } from 'lucide-react';
+import { LuHeart } from 'react-icons/lu';
 import styles from './CardButtons.module.scss';
 import { useState } from 'react';
 
@@ -10,7 +10,7 @@ const AddFavourite = () => {
     className={`${styles.Favourite} ${isActive ? styles.Active : ''}`}
       onClick={() => setIsActive((prev) => !prev)}>
       
-      <Heart />
+      <LuHeart size='24px'/>
     </button>
   );
 };

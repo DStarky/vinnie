@@ -1,10 +1,10 @@
-import { Heart } from 'lucide-react';
+import { LuHeart } from 'react-icons/lu';
 import styles from './Buttons.module.scss';
 
 const FavoriteButton = () => {
   return (
     <button className={styles.Button}>
-      <Heart />
+      <LuHeart size='24px'/>
     </button>
   )
 }

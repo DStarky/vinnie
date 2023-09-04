@@ -1,4 +1,4 @@
-import { Plus } from 'lucide-react';
+import { LuPlus } from 'react-icons/lu';
 import styles from './CardButtons.module.scss';
 import { useState } from 'react';
 
@@ -9,7 +9,7 @@ const AddBasket = () => {
     <button
       className={`${styles.Basket} ${isActive ? styles.Active : ''}`}
       onClick={() => setIsActive((prev) => !prev)}>
-      <Plus />
+      <LuPlus size='24px'/>
     </button>
   );
 };

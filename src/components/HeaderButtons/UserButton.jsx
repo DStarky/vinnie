@@ -1,11 +1,11 @@
-import { User } from 'lucide-react';
+import { LuUser } from 'react-icons/lu';
 import styles from './Buttons.module.scss';
 
 const UserButton = () => {
   return (
     <button className={styles.Button}>
-      <User />
+      <LuUser size='24px' />
     </button>
-  )
-}
-export default UserButton
+  );
+};
+export default UserButton;
