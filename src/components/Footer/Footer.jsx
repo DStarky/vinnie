@@ -5,11 +5,13 @@ import { FaTelegram, FaVk, FaInstagram } from 'react-icons/fa'; // Подклю�
 const Footer = () => {
   return (
     <div className={styles.Footer}>
-      <Link
-        to='/'
-        className={styles.Logo}>
-        Винни-пух
-      </Link>
+      <div>
+        <Link
+          to='/'
+          className={styles.Logo}>
+          Винни-пух
+        </Link>
+      </div>
       <div className={styles.Navigation}>
         <h3>Навигация:</h3>
         <ul>
@@ -17,7 +19,7 @@ const Footer = () => {
             <Link to='/'>Главная</Link>
           </li>
           <li>
-            <Link to='/menu'>Меню</Link>
+            <Link to='/basket'>Корзина</Link>
           </li>
           <li>
             <Link to='/delivery'>Доставка</Link>
@@ -49,13 +51,13 @@ const Footer = () => {
         <h3>Мы в соц. сетях:</h3>
         <div className={styles.SocialIcons}>
           <a href='#'>
-            <FaTelegram />
+            <FaTelegram size='32px' />
           </a>
           <a href='#'>
-            <FaVk />
+            <FaVk size='32px' />
           </a>
           <a href='#'>
-            <FaInstagram />
+            <FaInstagram size='32px' />
           </a>
         </div>
       </div>
