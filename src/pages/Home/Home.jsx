@@ -9,13 +9,13 @@ import Production from '../../components/Production/Production';
 import Search from '../../components/Search/Search';
 
 // import categories from back
-import categories from '../../data/categories.json'; 
+import categories from '../../data/categories.json';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cakes, setCakes] = useState(new Array(4).fill(null));
   const [isLoading, setIsLoading] = useState(true);
-
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     fetch(
@@ -32,12 +32,15 @@ const Home = () => {
   return (
     <>
       <Slider />
-        <Categories
-          categories={categories}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-        />
-      <Search />
+      <Categories
+        categories={categories}
+        activeIndex={activeIndex}
+        setActiveIndex={setActiveIndex}
+      />
+      <Search
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
       <Production
         cakes={cakes}
         isLoading={isLoading}
