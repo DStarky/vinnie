@@ -35,17 +35,20 @@ const Footer = () => {
       <div className={styles.Checkout}>
         <h3>Оформить заказ:</h3>
         <p>
-          Телефон: <a href='tel:+73532307536'>+7 (3532) 30-75-36</a>,{' '}
-          <a href='tel:+73532307010'>30-70-10</a>
+          <strong>Телефон:</strong>{' '}
+          <a href='tel:+73532307536'>+7 (3532) 30-75-36</a>
         </p>
         <p>
-          Email:{' '}
+          <strong>Email: </strong>
           <a href='mailto:winnipuhtort@yandex.ru'>winnipuhtort@yandex.ru</a>
         </p>
       </div>
       <div className={styles.Worktime}>
         <h3>Время работы:</h3>
-        <p>Заказы на доставку принимаются с 9:00 до 22:00</p>
+        <p>
+          Заказы на доставку принимаются
+          <br /> <strong>с 9:00 до 22:00</strong>
+        </p>
       </div>
       <div className={styles.Social}>
         <h3>Мы в соц. сетях:</h3>
