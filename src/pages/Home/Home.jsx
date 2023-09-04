@@ -17,6 +17,10 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
 
+  const filteredCakes = cakes.filter((cake) =>
+    cake?.name.toLowerCase().includes(searchValue.toLowerCase()),
+  );
+
   useEffect(() => {
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions${categories[activeIndex].request}`,
@@ -42,7 +46,7 @@ const Home = () => {
         setSearchValue={setSearchValue}
       />
       <Production
-        cakes={cakes}
+        cakes={filteredCakes}
         isLoading={isLoading}
       />
     </>
