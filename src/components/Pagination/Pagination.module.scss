@@ -17,12 +17,17 @@
     cursor: pointer;
     font-size: 2.4rem;
     transition: color .2s ease, background-color .2s ease;
-    
-  @media (any-hover: hover) {
-    &:hover {
+
+    &.selected {
       color: $color-bg-white;
       background-color: $color-main;
     }
-  }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $color-bg-white;
+        background-color: $color-main;
+      }
+    }
   }
 }

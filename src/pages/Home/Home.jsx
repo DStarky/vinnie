@@ -17,6 +17,7 @@ const Home = () => {
   const [cakes, setCakes] = useState(new Array(4).fill(null));
   const [isLoading, setIsLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
+  const [activePage, setActivePage] = useState(1);
 
   const filteredCakes = cakes.filter((cake) =>
     cake?.name.toLowerCase().includes(searchValue.toLowerCase()),
@@ -53,6 +54,8 @@ const Home = () => {
       <Pagination
         count={filteredCakes.length}
         limit={8}
+        activePage={activePage}
+        setActivePage={setActivePage}
       />
     </>
   );
