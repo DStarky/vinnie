@@ -8,7 +8,12 @@ const Pagination = (props) => {
   return (
     <ul className={styles.root}>
       {pages.map((_, index) => (
-        <li key={index} className={index === activePage - 1 ? styles.selected : ''}>{index + 1}</li>
+        <li
+          key={index}
+          className={index === activePage - 1 ? styles.selected : ''}
+          onClick={() => setActivePage(index + 1)}>
+          {index + 1}
+        </li>
       ))}
     </ul>
   );
