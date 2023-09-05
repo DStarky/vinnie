@@ -5,26 +5,26 @@
   },
   {
     "name": "Новинки",
-    "request": "?properties=новинка"
+    "request": "properties=новинка"
   },
   {
     "name": "Выпечка",
-    "request": "?category=Выпечка"
+    "request": "category=Выпечка"
   },
   {
     "name": "Пирожные",
-    "request": "?category=Пирожные"
+    "request": "category=Пирожные"
   },
   {
     "name": "Без сахара",
-    "request": "?properties=без%20сахара"
+    "request": "properties=без%20сахара"
   },
   {
     "name": "Торты",
-    "request": "?category=Торты"
+    "request": "category=Торты"
   },
   {
     "name": "Печенье",
-    "request": "?category=Печенье"
+    "request": "category=Печенье"
   }
 ]

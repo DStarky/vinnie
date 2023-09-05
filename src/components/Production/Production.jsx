@@ -4,13 +4,12 @@ import styles from './Production.module.scss';
 
 const Production = (props) => {
   const { cakes, isLoading } = props;
-
   return (
     <ul className={styles.Production}>
       {cakes.map((cake, index) => {
         return isLoading ? (
-          <Skeleton key={index} /> 
-          ) : (
+          <Skeleton key={index} />
+        ) : (
           <Card
             {...cake}
             key={cake.id}

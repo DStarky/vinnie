@@ -14,18 +14,21 @@ import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [cakes, setCakes] = useState(new Array(4).fill(null));
+  const [cakes, setCakes] = useState(Array(4).fill(null));
   const [isLoading, setIsLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const [activePage, setActivePage] = useState(1);
 
   const filteredCakes = cakes.filter((cake) =>
-    cake?.name.toLowerCase().includes(searchValue.toLowerCase()),
+    cake?.name?.toLowerCase().includes(searchValue.toLowerCase()),
   );
+
+  const limit = 8;
+  const paginationRequest = `page=${activePage}&limit=${limit}`;
 
   useEffect(() => {
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions${categories[activeIndex].request}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${categories[activeIndex].request}${paginationRequest}`,
     )
       .then((data) => data.json())
       .then((cakes) => {
@@ -33,7 +36,7 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch((e) => console.log(e));
-  }, [activeIndex]);
+  }, [activeIndex, activePage]);
 
   return (
     <>
@@ -53,7 +56,7 @@ const Home = () => {
       />
       <Pagination
         count={filteredCakes.length}
-        limit={8}
+        limit={limit}
         activePage={activePage}
         setActivePage={setActivePage}
       />
