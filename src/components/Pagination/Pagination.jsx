@@ -2,7 +2,7 @@ import styles from './Pagination.module.scss';
 
 const Pagination = () => {
   return (
-    <div>Pagination</div>
+    <div className={styles.root}>Pagination</div>
   )
 }
 export default Pagination

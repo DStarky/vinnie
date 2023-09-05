@@ -50,7 +50,10 @@ const Home = () => {
         cakes={filteredCakes}
         isLoading={isLoading}
       />
-      <Pagination />
+      <Pagination
+        count={filteredCakes.length}
+        limit={8}
+      />
     </>
   );
 };
