@@ -1,8 +1,16 @@
 import styles from './Pagination.module.scss';
 
-const Pagination = () => {
+const Pagination = (props) => {
+  const { count, limit } = props;
+  const pageValue = Math.ceil(count / limit);
+  const pages = new Array(pageValue).fill(null);
+
   return (
-    <div className={styles.root}>Pagination</div>
-  )
-}
-export default Pagination
+    <ul className={styles.root}>
+      {pages.map((_, index) => (
+        <li key={index}>{index + 1}</li>
+      ))}
+    </ul>
+  );
+};
+export default Pagination;

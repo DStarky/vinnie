@@ -1,3 +1,28 @@
-.root{
+@import '../../assets/styles/variables';
+
+.root {
   display: flex;
+  margin: 2.4rem 0;
+  gap: 1.2rem;
+  list-style-type: none;
+
+  & li {
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid $color-main;
+    cursor: pointer;
+    font-size: 2.4rem;
+    transition: color .2s ease, background-color .2s ease;
+    
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-bg-white;
+      background-color: $color-main;
+    }
+  }
+  }
 }
