@@ -10,6 +10,7 @@ import Search from '../../components/Search/Search';
 
 // import categories from back
 import categories from '../../data/categories.json';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -49,6 +50,7 @@ const Home = () => {
         cakes={filteredCakes}
         isLoading={isLoading}
       />
+      <Pagination />
     </>
   );
 };
