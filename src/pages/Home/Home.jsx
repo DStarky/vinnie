@@ -15,8 +15,8 @@ import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
   // const [activeIndex, setActiveIndex] = useState(0);
-  const [cakes, setCakes] = useState(Array(4).fill(null));
-  const [count, setCount] = useState(4); // Количество товаров на странице
+  const [cakes, setCakes] = useState([]);
+  const [count, setCount] = useState(4); // Общее количество товар на бэке
   const [isLoading, setIsLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const [activePage, setActivePage] = useState(1);
