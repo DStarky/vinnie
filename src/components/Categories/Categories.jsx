@@ -1,8 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux';
+import { setCategoryIndex } from '../../redux/slices/categorySlice';
 import styles from './Categories.module.scss';
 
 const Categories = (props) => {
-  const { categories, activeIndex, setActiveIndex } = props;
+  const { categories, activeIndex } = props;
+  const dispath = useDispatch();
 
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
 
@@ -17,7 +20,7 @@ const Categories = (props) => {
             className={`${styles.Category} ${
               activeIndex === index ? styles.ActiveCategory : ''
             }`}
-            onClick={() => setActiveIndex(index)}>
+            onClick={() => dispath(setCategoryIndex({ index }))}>
             {category.name}
           </li>
         );

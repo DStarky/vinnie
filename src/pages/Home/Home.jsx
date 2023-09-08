@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 //import styles
 import styles from './Home.module.scss';
 
@@ -13,12 +14,14 @@ import categories from '../../data/categories.json';
 import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // const [activeIndex, setActiveIndex] = useState(0);
   const [cakes, setCakes] = useState(Array(4).fill(null));
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(4); // Количество товаров на странице
   const [isLoading, setIsLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const [activePage, setActivePage] = useState(1);
+
+  const activeIndex = useSelector((state) => state.category.categoryIndex);
 
   const filteredCakes = cakes.filter((cake) =>
     cake?.name?.toLowerCase().includes(searchValue.toLowerCase()),
@@ -56,7 +59,6 @@ const Home = () => {
       <Categories
         categories={categories}
         activeIndex={activeIndex}
-        setActiveIndex={setActiveIndex}
       />
       <Search
         searchValue={searchValue}
