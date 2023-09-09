@@ -15,6 +15,7 @@ const filterSlice = createSlice({
     setCategoryIndex(state, action) {
       state.categoryIndex = action.payload.index;
       state.activePage = 1;
+      state.searchValue = '';
     },
 
     setSearchValue(state, action) {

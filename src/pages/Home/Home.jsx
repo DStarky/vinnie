@@ -34,10 +34,17 @@ const Home = () => {
   // );
 
   useEffect(() => {
-    console.log('Всего тортиков', count)
     // Get pagination
+    console.log(
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
+        searchValue && searchRequest
+      }&${paginationRequest}&${categories[activeIndex].request}`,
+    );
+
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${paginationRequest}&${categories[activeIndex].request}${searchValue && searchRequest}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
+        searchValue && searchRequest
+      }&${paginationRequest}&${categories[activeIndex].request}`,
     )
       .then((data) => data.json())
       .then((cakes) => {
@@ -48,7 +55,9 @@ const Home = () => {
 
     // Get all products
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${categories[activeIndex].request}${searchValue && searchRequest}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
+        searchValue && searchRequest
+      }&${categories[activeIndex].request}`,
     )
       .then((data) => data.json())
       .then((cakes) => {
@@ -73,7 +82,7 @@ const Home = () => {
         categories={categories}
         activeIndex={activeIndex}
       />
-      <Search />
+      <Search searchValue={searchValue} />
       <Production
         cakes={cakes}
         isLoading={isLoading}
@@ -81,6 +90,7 @@ const Home = () => {
       <Pagination
         count={count}
         limit={limit}
+        activePage={activePage}
       />
     </>
   );
