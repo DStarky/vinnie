@@ -14,10 +14,12 @@ const filterSlice = createSlice({
   reducers: {
     setCategoryIndex(state, action) {
       state.categoryIndex = action.payload.index;
+      state.activePage = 1;
     },
 
     setSearchValue(state, action) {
       state.searchValue = action.payload.text;
+      state.activePage = 1;
     },
 
     setActivePage(state, action) {
