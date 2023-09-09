@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import qs from 'qs';
 //import styles
 import styles from './Home.module.scss';
 
@@ -52,6 +53,16 @@ const Home = () => {
       })
       .catch((e) => console.log(e));
   }, [activeIndex, activePage, count]);
+
+  // QUERY STRING 
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      category: activeIndex,
+      page: activePage
+    });
+    console.log(queryString)
+  }, [activeIndex, activePage]);
 
   return (
     <>

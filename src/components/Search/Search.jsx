@@ -1,4 +1,5 @@
 import styles from './Search.module.scss';
+import debounce from 'lodash.debounce';
 
 const Search = (props) => {
   const { searchValue, setSearchValue } = props;
