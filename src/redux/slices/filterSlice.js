@@ -27,8 +27,12 @@ const filterSlice = createSlice({
       state.activePage = action.payload.page;
     },
 
+    setFilters(state, action) {
+      state.categoryIndex = Number(action.payload.category);
+      state.activePage = Number(action.payload.page);
+    }
   }
 })
 
-export const { setCategoryIndex, setSearchValue, setActivePage } = filterSlice.actions;
+export const { setCategoryIndex, setSearchValue, setActivePage, setFilters } = filterSlice.actions;
 export default filterSlice.reducer;

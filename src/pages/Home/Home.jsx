@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import qs from 'qs';
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setFilters } from '../../redux/slices/filterSlice';
+
 //import styles
 import styles from './Home.module.scss';
 
@@ -9,12 +13,15 @@ import Categories from '../../components/Categories/Categories';
 import Slider from '../../components/Slider/Slider';
 import Production from '../../components/Production/Production';
 import Search from '../../components/Search/Search';
+import Pagination from '../../components/Pagination/Pagination';
 
 // import categories from back
 import categories from '../../data/categories.json';
-import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [cakes, setCakes] = useState([]);
   const [count, setCount] = useState(4); // Общее количество товар на бэке
   const [isLoading, setIsLoading] = useState(true);
@@ -29,18 +36,15 @@ const Home = () => {
   const paginationRequest = `page=${activePage}&limit=${limit}`;
   const searchRequest = `&name=${searchValue}`;
 
-  // const filteredCakes = cakes.filter((cake) =>
-  //   cake?.name?.toLowerCase().includes(searchValue.toLowerCase()),
-  // );
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      dispatch(setFilters({ ...params }));
+    }
+  }, []);
 
   useEffect(() => {
     // Get pagination
-    console.log(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
-        searchValue && searchRequest
-      }&${paginationRequest}&${categories[activeIndex].request}`,
-    );
-
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
         searchValue && searchRequest
@@ -73,6 +77,7 @@ const Home = () => {
       category: activeIndex,
       page: activePage,
     });
+    navigate(`?${queryString}`);
   }, [activeIndex, activePage]);
 
   return (
