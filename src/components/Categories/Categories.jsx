@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
-import { setCategoryIndex } from '../../redux/slices/categorySlice';
+import { setCategoryIndex } from '../../redux/slices/filterSlice';
 import styles from './Categories.module.scss';
 
 const Categories = (props) => {

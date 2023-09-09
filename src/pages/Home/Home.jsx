@@ -15,21 +15,22 @@ import categories from '../../data/categories.json';
 import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
-  // const [activeIndex, setActiveIndex] = useState(0);
   const [cakes, setCakes] = useState([]);
   const [count, setCount] = useState(4); // Общее количество товар на бэке
   const [isLoading, setIsLoading] = useState(true);
-  const [searchValue, setSearchValue] = useState('');
-  const [activePage, setActivePage] = useState(1);
 
-  const activeIndex = useSelector((state) => state.category.categoryIndex);
+  const { activePage, searchValue, activeIndex } = useSelector((state) => ({
+    activePage: state.filter.activePage,
+    searchValue: state.filter.searchValue,
+    activeIndex: state.filter.categoryIndex,
+  }));
+
+  const limit = 8; // Количество товаров на одной странице
+  const paginationRequest = `page=${activePage}&limit=${limit}`;
 
   const filteredCakes = cakes.filter((cake) =>
     cake?.name?.toLowerCase().includes(searchValue.toLowerCase()),
   );
-
-  const limit = 8;
-  const paginationRequest = `page=${activePage}&limit=${limit}`;
 
   useEffect(() => {
     // Get pagination
@@ -54,14 +55,14 @@ const Home = () => {
       .catch((e) => console.log(e));
   }, [activeIndex, activePage, count]);
 
-  // QUERY STRING 
+  // QUERY STRING
 
   useEffect(() => {
     const queryString = qs.stringify({
       category: activeIndex,
-      page: activePage
+      page: activePage,
     });
-    console.log(queryString)
+    console.log(queryString);
   }, [activeIndex, activePage]);
 
   return (
@@ -71,10 +72,7 @@ const Home = () => {
         categories={categories}
         activeIndex={activeIndex}
       />
-      <Search
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      <Search />
       <Production
         cakes={filteredCakes}
         isLoading={isLoading}
@@ -82,8 +80,6 @@ const Home = () => {
       <Pagination
         count={count}
         limit={limit}
-        activePage={activePage}
-        setActivePage={setActivePage}
       />
     </>
   );
