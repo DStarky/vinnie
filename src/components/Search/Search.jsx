@@ -5,7 +5,7 @@ import styles from './Search.module.scss';
 import { useCallback } from 'react';
 import { useState } from 'react';
 
-const Search = ({ searchValue }) => {
+const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
