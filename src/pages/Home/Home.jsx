@@ -17,10 +17,12 @@ import Pagination from '../../components/Pagination/Pagination';
 
 // import categories from back
 import categories from '../../data/categories.json';
+import { useRef } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isMounted = useRef(false);
 
   const [cakes, setCakes] = useState([]);
   const [count, setCount] = useState(4); // Общее количество товар на бэке
@@ -43,8 +45,7 @@ const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // Get pagination
+  const fetchCakesWithPagination = () => {
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
         searchValue && searchRequest
@@ -56,8 +57,8 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch((e) => console.log(e));
-
-    // Get all products
+  };
+  const fetchCakesCount = () => {
     fetch(
       `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
         searchValue && searchRequest
@@ -68,16 +69,27 @@ const Home = () => {
         setCount(cakes.length);
       })
       .catch((e) => console.log(e));
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetchCakesWithPagination();
+    fetchCakesCount();
   }, [activeIndex, activePage, count, searchValue]);
 
   // QUERY STRING
 
   useEffect(() => {
-    const queryString = qs.stringify({
-      category: activeIndex,
-      page: activePage,
-    });
-    navigate(`?${queryString}`);
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        category: activeIndex,
+        page: activePage,
+      });
+
+      navigate(`?${queryString}`);
+    }
+    
+    isMounted.current = true;
   }, [activeIndex, activePage]);
 
   return (
