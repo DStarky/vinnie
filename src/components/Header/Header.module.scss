@@ -18,6 +18,13 @@
   color: $color-font-main;
   font-size: 3.2rem;
   margin-right: 4.8rem;
+  transition: color .2s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-main;
+    }
+  }
 }
 
 .Buttons {
