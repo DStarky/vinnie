@@ -20,7 +20,7 @@ const BasketPage = () => {
             </div>
             <ul className={styles.List}>
               {basket.map((el) => {
-                return <BasketProduct key={el.name} />;
+                return <BasketProduct key={el.name} {...el}/>;
               })}
             </ul>
           </>
