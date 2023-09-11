@@ -43,7 +43,11 @@ const Card = (props) => {
           <span>{price}</span> руб.
         </p>
         <AddFavourite />
-        <AddBasket />
+        <AddBasket
+          image={image}
+          name={name}
+          price={price}
+        />
       </div>
     </li>
   );

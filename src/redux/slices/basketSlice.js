@@ -12,19 +12,19 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket(state, action) {
-      const product = action.payload.product;
-
-      if (state.products.includes(product)) {
-        const indexOfProduct = state.products.findIndex( el => el === product);
-        state.products[indexOfProduct].count += 1;
-      } else {
-        const addedProduct = {product: {...product}, count: 1};
-        state.products = [...state.products, addedProduct];
+      const product = {
+        ...action.payload,
+        count: 1,
       }
-
+      const alreadyAdded = state.products.find(el => el.name === product.name);
+      if (alreadyAdded) {
+        alreadyAdded.count += 1;
+      } else {
+        state.products = [...state.products, product]
+      }
     },
   }
 })
 
-export const { } = basketSlice.actions;
+export const { addToBasket } = basketSlice.actions;
 export default basketSlice.reducer;

@@ -1,15 +1,31 @@
-import { LuPlus } from 'react-icons/lu';
-import styles from './CardButtons.module.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { LuPlus } from 'react-icons/lu';
 
-const AddBasket = () => {
+import { addToBasket } from '../../redux/slices/basketSlice';
+import styles from './CardButtons.module.scss';
+
+const AddBasket = ({ name, image, price }) => {
   const [isActive, setIsActive] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    setIsActive(true);
+    dispatch(
+      addToBasket({
+        name,
+        image,
+        price,
+      }),
+    );
+  };
 
   return (
     <button
       className={`${styles.Basket} ${isActive ? styles.Active : ''}`}
-      onClick={() => setIsActive((prev) => !prev)}>
-      <LuPlus size='24px'/>
+      onClick={handleClick}>
+      <LuPlus size='24px' />
     </button>
   );
 };
