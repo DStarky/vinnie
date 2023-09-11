@@ -28,6 +28,11 @@ const basketSlice = createSlice({
       const product = state.products.find(el => el.name === action.payload.name);
 
       action.payload.sign === 'plus' ? product.count += 1 : product.count -= 1;
+
+      if (product.count < 1) {
+        const index = state.products.findIndex(el => el.name === action.payload.name);
+        state.products.splice(index, 1);
+      }
     }
   }
 })

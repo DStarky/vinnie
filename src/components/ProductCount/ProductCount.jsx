@@ -17,7 +17,7 @@ const ProductCount = ({ count, name }) => {
   return (
     <div className={styles.Count}>
       <button
-        className={count > 1 ? styles.Minus : styles.Disable}
+        className={styles.Minus}
         onClick={() => counterHandler('minus', name)}>
         -
       </button>
