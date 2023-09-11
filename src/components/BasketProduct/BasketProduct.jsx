@@ -13,10 +13,14 @@ const BasketProduct = ({ count, image, name, price }) => {
       </div>
       <div className={styles.Text}>
         <h3>{name}</h3>
-        <p>{price}</p>
+        <p>
+          Цена за штуку: <span className={styles.Price}>{price} ₽</span>
+        </p>
       </div>
-      <BasketProductCounter />
-      <p className={styles.Total}>Итого: <span className={styles.Sum}>{price * 2}</span></p>
+      <BasketProductCounter count={count}/>
+      <p className={styles.Total}>
+        Итого: <span className={styles.Sum}>{price * count} ₽</span>
+      </p>
     </div>
   );
 };

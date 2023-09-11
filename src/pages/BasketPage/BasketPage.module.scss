@@ -4,6 +4,9 @@
   background-color: $color-bg-white;
   padding: 2.4rem;
   border-radius: 1.2rem;
+  @media screen and (max-width: 768px) {
+    border-radius: 0;
+  }
 }
 
 .Content {
@@ -11,6 +14,9 @@
   padding: 3rem;
   margin: 0 auto;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    padding: 3rem 0;
+  }
 }
 
 .NothingText {

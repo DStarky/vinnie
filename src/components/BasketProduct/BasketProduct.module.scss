@@ -9,6 +9,12 @@
   &:not(:last-child) {
     border-bottom: 1px solid $color-gray-border;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 2.4rem 0;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .Left {
@@ -40,11 +46,17 @@
   object-fit: cover;
 }
 
+.Price {
+  font-weight: 700;
+}
+
 .Total {
-  justify-self: end;
+  // justify-self: end;
+  text-align: right;
 }
 
 .Sum {
+  margin-top: 0.6rem;
   display: block;
   font-size: 3.2rem;
   font-weight: 700;
