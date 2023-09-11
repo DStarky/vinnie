@@ -1,13 +1,24 @@
+import { useDispatch } from 'react-redux';
+import { changeCount } from '../../redux/slices/basketSlice';
 import styles from './ProductCount.module.scss';
 
-const ProductCount = (props) => {
-  const { count, setCount } = props;
+const ProductCount = ({ count, name }) => {
+  const dispatch = useDispatch();
+
+  const counterHandler = (sign, name) => {
+    dispatch(
+      changeCount({
+        sign,
+        name,
+      }),
+    );
+  };
 
   return (
     <div className={styles.Count}>
       <button
         className={count > 1 ? styles.Minus : styles.Disable}
-        onClick={() => setCount((prev) => prev - 1)}>
+        onClick={() => counterHandler('minus', name)}>
         -
       </button>
       <input
@@ -17,7 +28,7 @@ const ProductCount = (props) => {
         readOnly></input>
       <button
         className={styles.Plus}
-        onClick={() => setCount((prev) => prev + 1)}>
+        onClick={() => counterHandler('plus', name)}>
         +
       </button>
     </div>

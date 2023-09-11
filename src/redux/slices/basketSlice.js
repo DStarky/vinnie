@@ -23,8 +23,14 @@ const basketSlice = createSlice({
         state.products = [...state.products, product]
       }
     },
+
+    changeCount(state, action) {
+      const product = state.products.find(el => el.name === action.payload.name);
+
+      action.payload.sign === 'plus' ? product.count += 1 : product.count -= 1;
+    }
   }
 })
 
-export const { addToBasket } = basketSlice.actions;
+export const { addToBasket, changeCount } = basketSlice.actions;
 export default basketSlice.reducer;

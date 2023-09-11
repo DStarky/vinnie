@@ -1,5 +1,5 @@
 import styles from './BasketProduct.module.scss';
-import BasketProductCounter from '../BasketProductCounter/BasketProductCounter';
+import ProductCount from '../ProductCount/ProductCount';
 
 const BasketProduct = ({ count, image, name, price }) => {
   return (
@@ -17,7 +17,7 @@ const BasketProduct = ({ count, image, name, price }) => {
           Цена за штуку: <span className={styles.Price}>{price} ₽</span>
         </p>
       </div>
-      <BasketProductCounter count={count}/>
+      <ProductCount count={count} name={name}/>
       <p className={styles.Total}>
         Итого: <span className={styles.Sum}>{price * count} ₽</span>
       </p>
