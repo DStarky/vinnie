@@ -16,7 +16,7 @@ const basketSlice = createSlice({
         ...action.payload,
         count: 1,
       }
-      const alreadyAdded = state.products.find(el => el.name === product.name);
+      const alreadyAdded = state.products.find(el => el.id === product.id);
       if (alreadyAdded) {
         alreadyAdded.count += 1;
       } else {
@@ -25,12 +25,12 @@ const basketSlice = createSlice({
     },
 
     changeCount(state, action) {
-      const product = state.products.find(el => el.name === action.payload.name);
+      const product = state.products.find(el => el.id === action.payload.id);
 
       action.payload.sign === 'plus' ? product.count += 1 : product.count -= 1;
 
       if (product.count < 1) {
-        const index = state.products.findIndex(el => el.name === action.payload.name);
+        const index = state.products.findIndex(el => el.id === action.payload.id);
         state.products.splice(index, 1);
       }
     }

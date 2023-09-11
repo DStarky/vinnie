@@ -4,11 +4,11 @@ import { LuPlus } from 'react-icons/lu';
 import { addToBasket } from '../../redux/slices/basketSlice';
 import styles from './CardButtons.module.scss';
 
-const AddBasket = ({ name, image, price }) => {
+const AddBasket = ({ name, image, price, id }) => {
 
   const dispatch = useDispatch();
 
-  const elementFromGlobalState = useSelector((state) => state.basket.products.find((el) => el.name === name));
+  const elementFromGlobalState = useSelector((state) => state.basket.products.find((el) => el.id === id));
 
   const handleClick = () => {
     dispatch(
@@ -16,6 +16,7 @@ const AddBasket = ({ name, image, price }) => {
         name,
         image,
         price,
+        id
       }),
     );
   };

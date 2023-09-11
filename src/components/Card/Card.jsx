@@ -4,7 +4,9 @@ import AddFavourite from '../CardButtons/AddFavourite';
 import AddBasket from '../CardButtons/AddBasket';
 
 const Card = (props) => {
-  const { name, price, image, properties, weight, description, slug } = props;
+  const { name, price, image, properties, weight, description, slug, id } =
+    props;
+
   return (
     <li className={styles.Card}>
       {properties && (
@@ -47,6 +49,7 @@ const Card = (props) => {
           image={image}
           name={name}
           price={price}
+          id={Number(id)}
         />
       </div>
     </li>
