@@ -2,7 +2,7 @@
 
 .Button {
   background-color: $color-bg-white;
-  border: 1px solid hsl(240, 6%, 83%);
+  border: 1px solid $color-gray-border;
   padding: 1.6rem;
   border-radius: 1.2rem;
   color: hsl(240, 4%, 42%);
@@ -47,4 +47,3 @@
   font-weight: 500;
   line-height: 1.5;
 }
-

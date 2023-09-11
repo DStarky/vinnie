@@ -1,0 +1,41 @@
+@import '../../assets/styles/variables';
+
+.Basket {
+  background-color: $color-bg-white;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+}
+
+.Content {
+  max-width: 78rem;
+  padding: 3rem;
+  margin: 0 auto;
+}
+
+.NothingText {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.Titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-gray-border;
+  padding-bottom: 2rem;
+}
+
+.ClearBasketButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: $color-font-gray;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $color-font-main;
+      border-bottom: 1px dashed black;
+    }
+  }
+}
