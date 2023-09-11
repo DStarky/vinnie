@@ -33,9 +33,13 @@ const basketSlice = createSlice({
         const index = state.products.findIndex(el => el.id === action.payload.id);
         state.products.splice(index, 1);
       }
+    },
+
+    clearProducts(state) {
+      state.products = [];
     }
   }
 })
 
-export const { addToBasket, changeCount } = basketSlice.actions;
+export const { addToBasket, changeCount, clearProducts } = basketSlice.actions;
 export default basketSlice.reducer;
