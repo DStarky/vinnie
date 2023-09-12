@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-export const fetchAllCakes = createAsyncThunk(
+export const fetchCakesCount = createAsyncThunk(
   'cakes/fetchAllCakes',
   async (params) => {
     const { categoryRequest, searchRequest } = params;
@@ -10,8 +10,19 @@ export const fetchAllCakes = createAsyncThunk(
   }
 )
 
+export const fetchCakesPage = createAsyncThunk(
+  'cakes/fetchCakesPage',
+  async (params) => {
+    const { categoryRequest, searchRequest, paginationRequest } = params;
+    const response = await axios.get(`https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${paginationRequest}&${categoryRequest}`);
+    return response.data;
+  }
+)
+
+
 // Создаем начальное значение (по аналогии с useState)
 const initialState = {
+  cakes: [],
   cakesCount: 4,
   status: 'loading' // loading | error | success
 }
@@ -25,18 +36,28 @@ const cakesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllCakes.pending, (state) => {
+      .addCase(fetchCakesCount.pending, (state) => {
         state.status = 'loading';
-        state.cakes = 4;
+        state.cakesCount = 4;
       })
-      .addCase(fetchAllCakes.fulfilled, (state, action) => {
+      .addCase(fetchCakesCount.fulfilled, (state, action) => {
         state.status = 'success';
         state.cakesCount = action.payload.length;
       })
-      .addCase(fetchAllCakes.rejected, (state, action) => {
+      .addCase(fetchCakesCount.rejected, (state, action) => {
         state.status = 'error';
-        state.cakes = 4;
-      });
+        state.cakesCount = 4;
+      })
+      .addCase(fetchCakesPage.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCakesPage.fulfilled, (state, action) => {
+        state.status = 'success';
+        state.cakes = action.payload;
+      })
+      .addCase(fetchCakesPage.rejected, (state, action) => {
+        state.status = 'error';
+      })
   }
 })
 

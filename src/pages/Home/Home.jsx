@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFilters } from '../../redux/slices/filterSlice';
-import { fetchAllCakes } from '../../redux/slices/cakesSlice';
+import { fetchCakesCount, fetchCakesPage } from '../../redux/slices/cakesSlice';
 
 //import styles
 import styles from './Home.module.scss';
@@ -25,17 +25,17 @@ const Home = () => {
   const dispatch = useDispatch();
   const isMounted = useRef(false);
 
-  const [cakes, setCakes] = useState([]);
-  const [count, setCount] = useState(4); // Общее количество товар на бэке
-  const [isLoading, setIsLoading] = useState(true);
+  // const [cakes, setCakes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const { activePage, searchValue, activeIndex } = useSelector((state) => ({
+    // Способ фильтрации продуктов
     activePage: state.filter.activePage,
     searchValue: state.filter.searchValue,
     activeIndex: state.filter.categoryIndex,
   }));
 
-  const { cakesCount, status } = useSelector((state) => state.cakes);
+  const { cakes, cakesCount, status } = useSelector((state) => state.cakes);
 
   const limit = 8; // Количество товаров на одной странице
   const paginationRequest = `page=${activePage}&limit=${limit}`;
@@ -49,44 +49,37 @@ const Home = () => {
     }
   }, []);
 
-  console.log(cakesCount, status);
-
-  const fetchCakesWithPagination = () => {
-    fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${paginationRequest}&${categoryRequest}`,
-    )
-      .then((data) => data.json())
-      .then((cakes) => {
-        setCakes(cakes);
-        setIsLoading(false);
-      })
-      .catch((e) => console.log(e));
-  };
-  const fetchCakesCount = () => {
-    fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`,
-    )
-      .then((data) => data.json())
-      .then((cakes) => {
-        setCount(cakes.length);
-      })
-      .catch((e) => console.log(e));
-  };
+  // const fetchCakesWithPagination = () => {
+  //   fetch(
+  //     `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${paginationRequest}&${categoryRequest}`,
+  //   )
+  //     .then((data) => data.json())
+  //     .then((cakes) => {
+  //       setCakes(cakes);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((e) => console.log(e));
+  // };
+  // const fetchCakesCount = () => {
+  //   fetch(
+  //     `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`,
+  //   )
+  //     .then((data) => data.json())
+  //     .then((cakes) => {
+  //       setCount(cakes.length);
+  //     })
+  //     .catch((e) => console.log(e));
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    dispatch(fetchAllCakes({ categoryRequest, searchRequest }));
+    dispatch(fetchCakesCount({ categoryRequest, searchRequest })); // for pagination
+    dispatch(fetchCakesPage({ categoryRequest, searchRequest, paginationRequest })); // get one of pages
+
     // fetchCakesWithPagination();
     // fetchCakesCount();
-  }, [
-    activeIndex,
-    activePage,
-    count,
-    searchValue,
-    categoryRequest,
-    searchRequest,
-  ]);
+  }, [categoryRequest, searchRequest, paginationRequest]);
 
   // QUERY STRING
 
@@ -113,10 +106,10 @@ const Home = () => {
       <Search searchValue={searchValue} />
       <Production
         cakes={cakes}
-        isLoading={isLoading}
+        status={status}
       />
       <Pagination
-        count={count}
+        count={cakesCount}
         limit={limit}
         activePage={activePage}
       />
