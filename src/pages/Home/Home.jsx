@@ -1,9 +1,11 @@
 import qs from 'qs';
+import { useRef } from 'react';
 
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFilters } from '../../redux/slices/filterSlice';
+import { fetchAllCakes } from '../../redux/slices/cakesSlice';
 
 //import styles
 import styles from './Home.module.scss';
@@ -17,7 +19,6 @@ import Pagination from '../../components/Pagination/Pagination';
 
 // import categories from back
 import categories from '../../data/categories.json';
-import { useRef } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -34,6 +35,8 @@ const Home = () => {
     activeIndex: state.filter.categoryIndex,
   }));
 
+  const { cakes: allCakes, status } = useSelector((state) => state.cakes);
+
   const limit = 8; // Количество товаров на одной странице
   const paginationRequest = `page=${activePage}&limit=${limit}`;
   const searchRequest = searchValue && `&name=${searchValue}`;
@@ -45,6 +48,8 @@ const Home = () => {
       dispatch(setFilters({ ...params }));
     }
   }, []);
+
+  console.log(allCakes, status);
 
   const fetchCakesWithPagination = () => {
     fetch(
@@ -70,9 +75,11 @@ const Home = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchCakesWithPagination();
-    fetchCakesCount();
-  }, [activeIndex, activePage, count, searchValue, categoryRequest]);
+
+    dispatch(fetchAllCakes({ categoryRequest, searchRequest }));
+    // fetchCakesWithPagination();
+    // fetchCakesCount();
+  }, [activeIndex, activePage, count, searchValue, categoryRequest, searchRequest]);
 
   // QUERY STRING
 

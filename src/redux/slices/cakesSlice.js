@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const fetchAllCakes = createAsyncThunk(
-  'cakes/fetchByIdStatus',
+export const fetchAllCakes = createAsyncThunk(
+  'cakes/fetchAllCakes',
   async (params) => {
-    const { categoryRequest,  searchRequest } = params;
-    const response = axios.get(`https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`);
-    return response.date;
+    const { categoryRequest, searchRequest } = params;
+    const response = await axios.get(`https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`);
+    return response.data;
   }
 )
 
@@ -23,7 +23,21 @@ const cakesSlice = createSlice({
   reducers: {
 
   },
-
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAllCakes.pending, (state) => {
+        state.status = 'loading';
+        state.cakes = [];
+      })
+      .addCase(fetchAllCakes.fulfilled, (state, action) => {
+        state.status = 'success';
+        state.cakes = action.payload;
+      })
+      .addCase(fetchAllCakes.rejected, (state, action) => {
+        state.status = 'error';
+        state.cakes = [];
+      });
+  }
 })
 
 export const { } = cakesSlice.actions;
