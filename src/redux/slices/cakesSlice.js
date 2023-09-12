@@ -44,7 +44,7 @@ const cakesSlice = createSlice({
         state.status = 'success';
         state.cakesCount = action.payload.length;
       })
-      .addCase(fetchCakesCount.rejected, (state, action) => {
+      .addCase(fetchCakesCount.rejected, (state) => {
         state.status = 'error';
         state.cakesCount = 4;
       })
@@ -55,7 +55,7 @@ const cakesSlice = createSlice({
         state.status = 'success';
         state.cakes = action.payload;
       })
-      .addCase(fetchCakesPage.rejected, (state, action) => {
+      .addCase(fetchCakesPage.rejected, (state) => {
         state.status = 'error';
       })
   }
