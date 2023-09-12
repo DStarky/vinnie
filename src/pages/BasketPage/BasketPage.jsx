@@ -1,15 +1,23 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import BasketProduct from '../../components/BasketProduct/BasketProduct';
 import styles from './BasketPage.module.scss';
 import { clearProducts } from '../../redux/slices/basketSlice';
 
 const BasketPage = () => {
   const basket = useSelector((state) => state.basket.products);
+  const [areYouSure, setAreYouSure] = useState(false);
 
   const dispatch = useDispatch();
 
   const handlerClear = () => {
+    if (!areYouSure) {
+      setAreYouSure(true);
+      return;
+    }
     dispatch(clearProducts());
+    setAreYouSure(false);
   };
 
   return (
@@ -20,15 +28,13 @@ const BasketPage = () => {
         {basket.length ? (
           <>
             <div className={styles.Titles}>
-
               <h3>Все товары</h3>
 
               <button
                 className={styles.ClearBasketButton}
                 onClick={handlerClear}>
-                Очистить корзину
+                {areYouSure ? 'Вы уверены?' : 'Очистить корзину'}
               </button>
-              
             </div>
             <ul className={styles.List}>
               {basket.map((el) => {
