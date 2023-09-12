@@ -36,7 +36,8 @@ const Home = () => {
 
   const limit = 8; // Количество товаров на одной странице
   const paginationRequest = `page=${activePage}&limit=${limit}`;
-  const searchRequest = `&name=${searchValue}`;
+  const searchRequest = searchValue && `&name=${searchValue}`;
+  const categoryRequest = categories[activeIndex].request;
 
   useEffect(() => {
     if (window.location.search) {
@@ -47,9 +48,7 @@ const Home = () => {
 
   const fetchCakesWithPagination = () => {
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
-        searchValue && searchRequest
-      }&${paginationRequest}&${categories[activeIndex].request}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${paginationRequest}&${categoryRequest}`,
     )
       .then((data) => data.json())
       .then((cakes) => {
@@ -60,9 +59,7 @@ const Home = () => {
   };
   const fetchCakesCount = () => {
     fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${
-        searchValue && searchRequest
-      }&${categories[activeIndex].request}`,
+      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`,
     )
       .then((data) => data.json())
       .then((cakes) => {
@@ -75,7 +72,7 @@ const Home = () => {
     window.scrollTo(0, 0);
     fetchCakesWithPagination();
     fetchCakesCount();
-  }, [activeIndex, activePage, count, searchValue]);
+  }, [activeIndex, activePage, count, searchValue, categoryRequest]);
 
   // QUERY STRING
 
@@ -88,7 +85,7 @@ const Home = () => {
 
       navigate(`?${queryString}`);
     }
-    
+
     isMounted.current = true;
   }, [activeIndex, activePage]);
 
