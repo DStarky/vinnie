@@ -35,7 +35,7 @@ const Home = () => {
     activeIndex: state.filter.categoryIndex,
   }));
 
-  const { cakes: allCakes, status } = useSelector((state) => state.cakes);
+  const { cakesCount, status } = useSelector((state) => state.cakes);
 
   const limit = 8; // Количество товаров на одной странице
   const paginationRequest = `page=${activePage}&limit=${limit}`;
@@ -49,7 +49,7 @@ const Home = () => {
     }
   }, []);
 
-  console.log(allCakes, status);
+  console.log(cakesCount, status);
 
   const fetchCakesWithPagination = () => {
     fetch(
@@ -79,7 +79,14 @@ const Home = () => {
     dispatch(fetchAllCakes({ categoryRequest, searchRequest }));
     // fetchCakesWithPagination();
     // fetchCakesCount();
-  }, [activeIndex, activePage, count, searchValue, categoryRequest, searchRequest]);
+  }, [
+    activeIndex,
+    activePage,
+    count,
+    searchValue,
+    categoryRequest,
+    searchRequest,
+  ]);
 
   // QUERY STRING
 

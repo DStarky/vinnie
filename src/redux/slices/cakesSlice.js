@@ -12,7 +12,7 @@ export const fetchAllCakes = createAsyncThunk(
 
 // Создаем начальное значение (по аналогии с useState)
 const initialState = {
-  cakes: [],
+  cakesCount: 4,
   status: 'loading' // loading | error | success
 }
 
@@ -27,15 +27,15 @@ const cakesSlice = createSlice({
     builder
       .addCase(fetchAllCakes.pending, (state) => {
         state.status = 'loading';
-        state.cakes = [];
+        state.cakes = 4;
       })
       .addCase(fetchAllCakes.fulfilled, (state, action) => {
         state.status = 'success';
-        state.cakes = action.payload;
+        state.cakesCount = action.payload.length;
       })
       .addCase(fetchAllCakes.rejected, (state, action) => {
         state.status = 'error';
-        state.cakes = [];
+        state.cakes = 4;
       });
   }
 })
