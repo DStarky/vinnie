@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   categoryIndex: 0,
   activePage: 1,
-  searchValue: ''
+  searchValue: '',
+  searchBeforeDebounce: '',
 }
 
 // Создаем slice (отдельное хранилище с данными и методами)
@@ -16,11 +17,16 @@ const filterSlice = createSlice({
       state.categoryIndex = action.payload.index;
       state.activePage = 1;
       state.searchValue = '';
+      state.searchBeforeDebounce = '';
     },
 
     setSearchValue(state, action) {
       state.searchValue = action.payload.text;
       state.activePage = 1;
+    },
+
+    setSearchBeforeDebounce(state, action) {
+      state.searchBeforeDebounce = action.payload.text;
     },
 
     setActivePage(state, action) {
@@ -34,5 +40,5 @@ const filterSlice = createSlice({
   }
 })
 
-export const { setCategoryIndex, setSearchValue, setActivePage, setFilters } = filterSlice.actions;
+export const { setCategoryIndex, setSearchValue, setActivePage, setFilters, setSearchBeforeDebounce } = filterSlice.actions;
 export default filterSlice.reducer;

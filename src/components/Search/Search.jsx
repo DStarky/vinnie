@@ -1,13 +1,16 @@
-import { useDispatch } from 'react-redux';
-import { setSearchValue } from '../../redux/slices/filterSlice';
+import { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
+
+import {
+  setSearchBeforeDebounce,
+  setSearchValue,
+} from '../../redux/slices/filterSlice';
 import styles from './Search.module.scss';
-import { useCallback } from 'react';
-import { useState } from 'react';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
+  const { searchBeforeDebounce } = useSelector((state) => state.filter);
 
   const updateSearchValue = useCallback(
     debounce((str) => {
@@ -17,7 +20,11 @@ const Search = () => {
   );
 
   const onChangeInput = (event) => {
-    setValue(event.target.value);
+    dispatch(
+      setSearchBeforeDebounce({
+        text: event.target.value,
+      }),
+    );
     updateSearchValue(event.target.value);
   };
 
@@ -25,7 +32,7 @@ const Search = () => {
     <div className={styles.Root}>
       <input
         className={styles.Input}
-        value={value}
+        value={searchBeforeDebounce}
         onChange={onChangeInput}
         placeholder='Найти вкусняшку ...'
       />
