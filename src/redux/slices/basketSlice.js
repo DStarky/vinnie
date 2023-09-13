@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 // Создаем начальное значение (по аналогии с useState)
 const initialState = {
   totalAmount: 0,
+  totalCount: 0,
   products: []
 }
 
@@ -22,22 +23,31 @@ const basketSlice = createSlice({
       } else {
         state.products = [...state.products, product]
       }
+      state.totalCount += 1;
     },
 
     changeCount(state, action) {
       const product = state.products.find(el => el.id === action.payload.id);
 
-      action.payload.sign === 'plus' ? product.count += 1 : product.count -= 1;
+      if (action.payload.sign === 'plus') { 
+        product.count += 1 
+        state.totalCount += 1;
+      } else { 
+        product.count -= 1 
+        state.totalCount -= 1;
+      };
 
       if (product.count < 1) {
-        const index = state.products.findIndex(el => el.id === action.payload.id);
-        state.products.splice(index, 1);
+        state.products = state.products.filter(el => el.id !== action.payload.id)
       }
     },
 
     clearProducts(state) {
       state.products = [];
-    }
+      state.totalCount = 0;
+      state.totalAmount = 0;
+    },
+
   }
 })
 
