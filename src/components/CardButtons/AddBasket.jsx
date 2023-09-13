@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { LuPlus } from 'react-icons/lu';
 
-import { addToBasket } from '../../redux/slices/basketSlice';
+import { addToBasket, selectBasket } from '../../redux/slices/basketSlice';
 import styles from './CardButtons.module.scss';
 
 const AddBasket = ({ name, image, price, id }) => {
 
   const dispatch = useDispatch();
 
-  const elementFromGlobalState = useSelector((state) => state.basket.products.find((el) => el.id === id));
+  const productsInBasket = useSelector(selectBasket).products;
+  const elementInBasket = productsInBasket.find((el) => el.id === id);
 
   const handleClick = () => {
     dispatch(
@@ -23,11 +24,11 @@ const AddBasket = ({ name, image, price, id }) => {
 
   return (
     <button
-      className={`${styles.Basket} ${elementFromGlobalState && styles.Active}`}
+      className={`${styles.Basket} ${elementInBasket && styles.Active}`}
       onClick={handleClick}>
       <LuPlus size='24px' />
-      {elementFromGlobalState && (
-        <span className={styles.Count}>{elementFromGlobalState.count}</span>
+      {elementInBasket && (
+        <span className={styles.Count}>{elementInBasket.count}</span>
       )}
     </button>
   );
