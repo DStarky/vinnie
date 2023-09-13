@@ -61,5 +61,6 @@ const cakesSlice = createSlice({
   }
 })
 
+export const selectCakes = (state) => state.cakes;
 export const { } = cakesSlice.actions;
 export default cakesSlice.reducer;

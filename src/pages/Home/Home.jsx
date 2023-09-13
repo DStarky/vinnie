@@ -4,8 +4,12 @@ import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setFilters } from '../../redux/slices/filterSlice';
-import { fetchCakesCount, fetchCakesPage } from '../../redux/slices/cakesSlice';
+import { selectFilter, setFilters } from '../../redux/slices/filterSlice';
+import {
+  fetchCakesCount,
+  fetchCakesPage,
+  selectCakes,
+} from '../../redux/slices/cakesSlice';
 
 //import styles
 import styles from './Home.module.scss';
@@ -25,22 +29,14 @@ const Home = () => {
   const dispatch = useDispatch();
   const isMounted = useRef(false);
 
-  // const [cakes, setCakes] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
+  const { activePage, searchValue, categoryIndex } = useSelector(selectFilter);
 
-  const { activePage, searchValue, activeIndex } = useSelector((state) => ({
-    // Способ фильтрации продуктов
-    activePage: state.filter.activePage,
-    searchValue: state.filter.searchValue,
-    activeIndex: state.filter.categoryIndex,
-  }));
-
-  const { cakes, cakesCount, status } = useSelector((state) => state.cakes);
+  const { cakes, cakesCount, status } = useSelector(selectCakes);
 
   const limit = 8; // Количество товаров на одной странице
   const paginationRequest = `page=${activePage}&limit=${limit}`;
   const searchRequest = searchValue && `&name=${searchValue}`;
-  const categoryRequest = categories[activeIndex].request;
+  const categoryRequest = categories[categoryIndex].request;
 
   useEffect(() => {
     if (window.location.search) {
@@ -49,44 +45,19 @@ const Home = () => {
     }
   }, []);
 
-  // const fetchCakesWithPagination = () => {
-  //   fetch(
-  //     `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${paginationRequest}&${categoryRequest}`,
-  //   )
-  //     .then((data) => data.json())
-  //     .then((cakes) => {
-  //       setCakes(cakes);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
-  // const fetchCakesCount = () => {
-  //   fetch(
-  //     `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?${searchRequest}&${categoryRequest}`,
-  //   )
-  //     .then((data) => data.json())
-  //     .then((cakes) => {
-  //       setCount(cakes.length);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
     dispatch(fetchCakesCount({ categoryRequest, searchRequest })); // for pagination
-    dispatch(fetchCakesPage({ categoryRequest, searchRequest, paginationRequest })); // get one of pages
-
-    // fetchCakesWithPagination();
-    // fetchCakesCount();
+    dispatch(
+      fetchCakesPage({ categoryRequest, searchRequest, paginationRequest }),
+    ); // get one of pages
   }, [categoryRequest, searchRequest, paginationRequest]);
-
-  // QUERY STRING
 
   useEffect(() => {
     if (isMounted.current) {
       const queryString = qs.stringify({
-        category: activeIndex,
+        category: categoryIndex,
         page: activePage,
       });
 
@@ -94,14 +65,14 @@ const Home = () => {
     }
 
     isMounted.current = true;
-  }, [activeIndex, activePage]);
+  }, [categoryIndex, activePage]);
 
   return (
     <>
       <Slider />
       <Categories
         categories={categories}
-        activeIndex={activeIndex}
+        activeIndex={categoryIndex}
       />
       <Search searchValue={searchValue} />
       <Production
