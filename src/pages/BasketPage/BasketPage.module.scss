@@ -50,3 +50,12 @@
 .List{
   list-style-type: none;
 }
+
+.Amount{
+  font-size: 3.2rem;
+  margin-top: 1.2rem;
+  text-align: right;
+  span{
+    font-weight: 700;
+  }
+}

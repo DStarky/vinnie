@@ -7,6 +7,7 @@ import { clearProducts, selectBasket } from '../../redux/slices/basketSlice';
 
 const BasketPage = () => {
   const productsInBasket = useSelector(selectBasket).products;
+  const totalAmount = useSelector(selectBasket).totalAmount;
   const [areYouSure, setAreYouSure] = useState(false);
 
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ const BasketPage = () => {
                 );
               })}
             </ul>
+            <p className={styles.Amount}>Сумма: <span>{totalAmount}₽</span></p>
           </>
         ) : (
           <p className={styles.NothingText}>Вы пока ничего не добавили :(</p>
