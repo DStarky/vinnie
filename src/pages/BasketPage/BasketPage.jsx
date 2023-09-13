@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import BasketProduct from '../../components/BasketProduct/BasketProduct';
 import styles from './BasketPage.module.scss';
-import { clearProducts } from '../../redux/slices/basketSlice';
+import { clearProducts, selectBasket } from '../../redux/slices/basketSlice';
 
 const BasketPage = () => {
-  const basket = useSelector((state) => state.basket.products);
+  const productsInBasket = useSelector(selectBasket).products;
   const [areYouSure, setAreYouSure] = useState(false);
 
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const BasketPage = () => {
       <h2>Корзина</h2>
 
       <main className={styles.Content}>
-        {basket.length ? (
+        {productsInBasket.length ? (
           <>
             <div className={styles.Titles}>
               <h3>Все товары</h3>
@@ -37,7 +37,7 @@ const BasketPage = () => {
               </button>
             </div>
             <ul className={styles.List}>
-              {basket.map((el) => {
+              {productsInBasket.map((el) => {
                 return (
                   <BasketProduct
                     key={el.name}
