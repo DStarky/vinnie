@@ -24,17 +24,20 @@ const basketSlice = createSlice({
         state.products = [...state.products, product]
       }
       state.totalCount += 1;
+      state.totalAmount += product.price;
     },
 
     changeCount(state, action) {
       const product = state.products.find(el => el.id === action.payload.id);
 
-      if (action.payload.sign === 'plus') { 
-        product.count += 1 
+      if (action.payload.sign === 'plus') {
+        product.count += 1
         state.totalCount += 1;
-      } else { 
-        product.count -= 1 
+        state.totalAmount += product.price;
+      } else {
+        product.count -= 1
         state.totalCount -= 1;
+        state.totalAmount -= product.price;
       };
 
       if (product.count < 1) {
