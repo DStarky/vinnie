@@ -46,6 +46,7 @@ const Card = (props) => {
         </p>
         <AddFavourite />
         <AddBasket
+          link={`/production/${slug}`}
           image={image}
           name={name}
           price={price}
