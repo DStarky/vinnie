@@ -10,8 +10,6 @@ const AddBasket = ({ name, image, price, id, link, text }) => {
   const productsInBasket = useSelector(selectBasket).products;
   const elementInBasket = productsInBasket.find((el) => el.id === Number(id));
 
-  console.log(elementInBasket)
-
   const handleClick = () => {
     dispatch(
       addToBasket({
