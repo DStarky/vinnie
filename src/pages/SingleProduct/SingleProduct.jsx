@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import styles from './SingleProduct.module.scss';
 import ProductCount from '../../components/ProductCount/ProductCount';
@@ -7,38 +8,54 @@ import Production from '../../components/Production/Production';
 import NotFound from '../../pages/NotFound/NotFound';
 
 const SingleProduct = () => {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const [cake, setCake] = useState({});
   const [similar, setSimilar] = useState([]);
-  const [count, setCount] = useState(1);
-  const [isButtonActive, setIsButtonActive] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?slug=${slug}`,
-    )
-      .then((data) => data.json())
-      .then((cake) => {
-        if (cake) {
-          setCake(cake[0]);
-          setIsLoading(false);
-        }
-      })
-      .catch((e) => console.log(e));
+
+    const getPizza = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?slug=${slug}`,
+        );
+        setCake(data[0]);
+        setIsLoading(false);
+      } catch (error) {
+        alert(
+          'Товар не найден, вы будете автоматически перемещены на главную страницу',
+        );
+        navigate('/');
+      }
+    };
+    getPizza();
   }, [slug]);
 
   useEffect(() => {
-    if (cake) {
-      fetch(
-        `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}&page=1&limit=3`,
-      )
-        .then((data) => data.json())
-        .then((cakes) => setSimilar(cakes))
-        .catch((e) => console.log(e));
+    const getSimilar = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}`,
+        );
+        const filteredData = data.filter(
+          (product) => product.name !== cake.name,
+        );
+
+        setSimilar(filteredData.slice(0, 3));
+        setIsLoading(false);
+      } catch (error) {
+        alert('Похожих товаров не найдено');
+      }
+    };
+
+    if (!isLoading) {
+      getSimilar();
     }
-  }, [cake]);
+  }, [isLoading]);
 
   if (!cake) {
     return <NotFound />;
@@ -79,7 +96,7 @@ const SingleProduct = () => {
               <p className={styles.Price}>
                 <span>{cake.price}</span> руб.
               </p>
-              <div className={styles.AddToBasket}>
+              {/* <div className={styles.AddToBasket}>
                 <ProductCount
                   count={count}
                   setCount={setCount}
@@ -90,7 +107,7 @@ const SingleProduct = () => {
                   onClick={() => setIsButtonActive((prev) => !prev)}>
                   {isButtonActive ? 'Удалить из корзины' : 'Добавить в корзину'}
                 </button>
-              </div>
+              </div> */}
               <p className={styles.Weight}>
                 Вес: <span>{cake.weight}</span>
               </p>
