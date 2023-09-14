@@ -102,7 +102,7 @@ const SingleProduct = () => {
                 <span>{cake.price}</span> руб.
               </p>
               <div className={styles.AddToBasket}>
-                <AddBasket {...cake}/>
+                <AddBasket {...cake} text/>
               </div>
               <p className={styles.Weight}>
                 Вес: <span>{cake.weight}</span>

@@ -4,7 +4,7 @@ import { LuPlus } from 'react-icons/lu';
 import { addToBasket, selectBasket } from '../../redux/slices/basketSlice';
 import styles from './CardButtons.module.scss';
 
-const AddBasket = ({ name, image, price, id, link }) => {
+const AddBasket = ({ name, image, price, id, link, text }) => {
   const dispatch = useDispatch();
 
   const productsInBasket = useSelector(selectBasket).products;
@@ -28,7 +28,7 @@ const AddBasket = ({ name, image, price, id, link }) => {
     <button
       className={`${styles.Basket} ${elementInBasket && styles.Active}`}
       onClick={handleClick}>
-      <LuPlus size='24px' />
+      {text ? 'Добавить в корзину' : <LuPlus size='24px' />}
       {elementInBasket && (
         <span className={styles.Count}>{elementInBasket.count}</span>
       )}

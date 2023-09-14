@@ -23,7 +23,7 @@
   }
 
   &.Active {
-    background-color: white;
+    background-color: transparent;
     border: 1px solid hsl(328, 92%, 47%);
     border-radius: 1.2rem;
     color: hsl(328, 92%, 47%);
@@ -55,7 +55,7 @@
 .Count{
   align-items: center;
   background-color: $color-main;
-  border: 2px solid $color-bg-white;
+  border: 2px solid transparent;
   border-radius: 50%;
   color: white;
   display: flex;

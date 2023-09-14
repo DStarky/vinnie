@@ -125,36 +125,10 @@
 }
 
 .AddToBasket {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem 2.4rem;
+
   margin-bottom: 2.4rem;
 }
 
-.AddButton {
-  background-color: $color-main;
-  border: 1px solid transparent;
-  border-radius: 1.2rem;
-  color: $color-bg-white;
-  cursor: pointer;
-  outline: none;
-  padding: 1.2rem 2.4rem;
-  position: relative;
-  transition: color .3s ease, border .3s ease, background-color .3s ease;
-
-  @media (any-hover: hover) {
-    &:hover {
-      filter: brightness(1.1);
-    }
-  }
-
-  &.Active {
-    background-color: transparent;
-    border: 1px solid $color-main;
-    color: $color-main;
-  }
-}
 
 .Similar {
   & .FromCategory {
