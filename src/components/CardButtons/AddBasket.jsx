@@ -8,7 +8,9 @@ const AddBasket = ({ name, image, price, id, link }) => {
   const dispatch = useDispatch();
 
   const productsInBasket = useSelector(selectBasket).products;
-  const elementInBasket = productsInBasket.find((el) => el.id === id);
+  const elementInBasket = productsInBasket.find((el) => el.id === Number(id));
+
+  console.log(elementInBasket)
 
   const handleClick = () => {
     dispatch(
@@ -16,7 +18,7 @@ const AddBasket = ({ name, image, price, id, link }) => {
         name,
         image,
         price,
-        id,
+        id : Number(id),
         link,
       }),
     );

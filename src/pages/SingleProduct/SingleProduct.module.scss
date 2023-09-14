@@ -1,8 +1,24 @@
 @import '../../assets/styles/variables';
 
 .Container {
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px;
+}
+
+.Count{
+  align-items: center;
+  background-color: $color-main;
+  border: 2px solid $color-bg-white;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-size: 1.2rem;
+  height: 2.8rem;
+  justify-content: center;
+  position: absolute;
+  right: -0.6rem;
+  top: -1rem;
+  width: 2.8rem;
 }
 
 .BreadCrumbs {
@@ -11,8 +27,8 @@
   margin: 1.2rem 0;
 
   & a {
-    text-decoration: none;
     color: $color-font-gray;
+    text-decoration: none;
   }
 
   @media screen and (max-width: 768px) {
@@ -31,26 +47,26 @@
 
 .Properties {
   display: flex;
-  list-style-type: none;
   gap: 0.8rem;
+  list-style-type: none;
   margin-bottom: 1.2rem;
 
   & li {
-    padding: 0.4rem 0.8rem;
-    color: $color-bg-white;
     background-color: $color-main;
     border-radius: 0.8rem;
+    color: $color-bg-white;
+    padding: 0.4rem 0.8rem;
   }
 }
 
 
 .Cover {
+  align-items: center;
+  display: flex;
   flex: 1 1 100%;
+  justify-content: center;
   max-height: 42rem;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .Content {
@@ -62,17 +78,17 @@
 }
 
 .Image {
-  width: 100%;
-  height: 100%;
   display: block;
+  height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .Name {
+  border-bottom: 1px solid hsl(0, 0%, 80%);
   font-size: 4.8rem;
   margin-bottom: 1.2rem;
   padding-bottom: 1.2rem;
-  border-bottom: 1px solid hsl(0, 0%, 80%);
 
   @media screen and (max-width: 576px) {
     font-size: 3.6rem;
@@ -89,8 +105,8 @@
 
 .Description {
   color: $color-font-gray;
-  max-width: 60rem;
   font-size: 2rem;
+  max-width: 60rem;
 }
 
 .Price {
@@ -100,30 +116,31 @@
   margin: 2.4rem 0;
 
   & span {
-    font-family: 'Inter';
-    font-weight: 700;
     color: $color-font-main;
+    font-family: 'Inter';
     font-size: 4rem;
+    font-weight: 700;
     line-height: 0.8;
   }
 }
 
 .AddToBasket {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 2.4rem;
   gap: 1.2rem 2.4rem;
+  margin-bottom: 2.4rem;
 }
 
 .AddButton {
-  border: 1px solid transparent;
-  outline: none;
   background-color: $color-main;
-  color: $color-bg-white;
-  padding: 1.2rem 2.4rem;
+  border: 1px solid transparent;
   border-radius: 1.2rem;
+  color: $color-bg-white;
   cursor: pointer;
+  outline: none;
+  padding: 1.2rem 2.4rem;
+  position: relative;
   transition: color .3s ease, border .3s ease, background-color .3s ease;
 
   @media (any-hover: hover) {
@@ -133,8 +150,8 @@
   }
 
   &.Active {
-    border: 1px solid $color-main;
     background-color: transparent;
+    border: 1px solid $color-main;
     color: $color-main;
   }
 }
@@ -150,21 +167,23 @@
 }
 
 .Loading {
+  animation: loading 1s linear infinite;
   border: 16px solid $color-main;
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   border-top: 16px solid transparent;
-  animation: loading 1s linear infinite;
+  height: 100px;
+  width: 100px;
 }
 
 .LoadingParent{
-  width: 100%;
-  height: 60rem;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 60rem;
+  justify-content: center;
+  width: 100%;
 }
+
+
 
 
 @keyframes loading {
