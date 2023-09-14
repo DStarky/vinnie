@@ -1,10 +1,14 @@
 import qs from 'qs';
 import { useRef } from 'react';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectFilter, setFilters } from '../../redux/slices/filterSlice';
+import {
+  resetFilters,
+  selectFilter,
+  setFilters,
+} from '../../redux/slices/filterSlice';
 import {
   fetchCakesCount,
   fetchCakesPage,
@@ -43,6 +47,7 @@ const Home = () => {
       const params = qs.parse(window.location.search.substring(1));
       dispatch(setFilters({ ...params }));
     }
+    dispatch(resetFilters());
   }, []);
 
   useEffect(() => {
