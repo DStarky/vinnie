@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
+import { selectBasket } from '../../redux/slices/basketSlice';
 import styles from './SingleProduct.module.scss';
-import ProductCount from '../../components/ProductCount/ProductCount';
 import Production from '../../components/Production/Production';
 import NotFound from '../../pages/NotFound/NotFound';
 
@@ -14,6 +15,11 @@ const SingleProduct = () => {
   const [similar, setSimilar] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  const productsInBasket = useSelector(selectBasket).products;
+  const elementInBasket = productsInBasket.find((el) => el.id === Number(cake.id));
+
+  console.log(elementInBasket)
 
   useEffect(() => {
     setIsLoading(true);
@@ -96,18 +102,14 @@ const SingleProduct = () => {
               <p className={styles.Price}>
                 <span>{cake.price}</span> руб.
               </p>
-              {/* <div className={styles.AddToBasket}>
-                <ProductCount
-                  count={count}
-                  setCount={setCount}
-                />
+              <div className={styles.AddToBasket}>
                 <button
-                  className={`${styles.AddButton} 
-                ${isButtonActive ? styles.Active : ''}`}
-                  onClick={() => setIsButtonActive((prev) => !prev)}>
-                  {isButtonActive ? 'Удалить из корзины' : 'Добавить в корзину'}
+                  className={`${styles.AddButton} ${
+                    elementInBasket ? styles.Active : ''
+                  }`}>
+                  Добавить в корзину
                 </button>
-              </div> */}
+              </div>
               <p className={styles.Weight}>
                 Вес: <span>{cake.weight}</span>
               </p>
