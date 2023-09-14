@@ -20,6 +20,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    window.scrollTo(0, 0);
 
     const getPizza = async () => {
       try {
@@ -36,6 +37,7 @@ const SingleProduct = () => {
       }
     };
     getPizza();
+    
   }, [slug]);
 
   useEffect(() => {
