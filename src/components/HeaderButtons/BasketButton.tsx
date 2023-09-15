@@ -4,7 +4,7 @@ import { LuShoppingBag } from 'react-icons/lu';
 import styles from './Buttons.module.scss';
 import { selectBasket } from '../../redux/slices/basketSlice';
 
-const BasketButton = ({ showText }) => {
+const BasketButton: React.FC<{showText: boolean }> = ({ showText }) => {
   const totalCountInBasket = useSelector(selectBasket).totalCount;
 
   return (

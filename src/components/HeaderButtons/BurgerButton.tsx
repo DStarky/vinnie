@@ -1,8 +1,12 @@
 import { LuMenu } from 'react-icons/lu';
 import styles from './Buttons.module.scss';
 
-const BurgerButton = (props) => {
-  const { setOpen } = props;
+interface BurgerButtonProps {
+  setOpen: (value: boolean) => void;
+}
+
+
+const BurgerButton: React.FC<BurgerButtonProps> = ({ setOpen }) => {
 
   return (
     <button className={`${styles.Button} ${styles.BurgerButton}`} onClick={() => setOpen(true)}>
