@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { FaTelegram, FaVk, FaInstagram } from 'react-icons/fa'; // Подключение иконок
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className={styles.Footer}>
       <div>
