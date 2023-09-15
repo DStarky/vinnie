@@ -5,7 +5,7 @@ import BasketProduct from '../../components/BasketProduct/BasketProduct';
 import styles from './BasketPage.module.scss';
 import { clearProducts, selectBasket } from '../../redux/slices/basketSlice';
 
-const BasketPage = () => {
+const BasketPage: React.FC = () => {
   const productsInBasket = useSelector(selectBasket).products;
   const totalAmount = useSelector(selectBasket).totalAmount;
   const [areYouSure, setAreYouSure] = useState(false);
@@ -38,7 +38,7 @@ const BasketPage = () => {
               </button>
             </div>
             <ul className={styles.List}>
-              {productsInBasket.map((el) => {
+              {productsInBasket.map((el: any) => {
                 return (
                   <BasketProduct
                     key={el.name}
@@ -47,7 +47,9 @@ const BasketPage = () => {
                 );
               })}
             </ul>
-            <p className={styles.Amount}>Сумма: <span>{totalAmount}₽</span></p>
+            <p className={styles.Amount}>
+              Сумма: <span>{totalAmount}₽</span>
+            </p>
           </>
         ) : (
           <p className={styles.NothingText}>Вы пока ничего не добавили :(</p>

@@ -1,4 +1,4 @@
-const AboutUs = () => {
+const AboutUs: React.FC = () => {
   return (
     <div className='page-wrapper'>
       <h2>О нас</h2>
