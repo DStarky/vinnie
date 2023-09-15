@@ -6,7 +6,7 @@ import axios from 'axios';
 import { addToBasket, selectBasket } from '../../redux/slices/basketSlice';
 import styles from './SingleProduct.module.scss';
 import Production from '../../components/Production/Production';
-import NotFound from '../../pages/NotFound/NotFound';
+import NotFound from '../NotFound/NotFound';
 import AddBasket from '../../components/CardButtons/AddBasket';
 
 const SingleProduct = () => {
