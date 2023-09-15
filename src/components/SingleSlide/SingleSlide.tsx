@@ -4,9 +4,16 @@ import Button from '../Button/Button';
 import styles from './SingleSlide.module.scss';
 import { Link } from 'react-router-dom';
 
-const SingleSlide = (props) => {
-  const { title, text, buttonText, imageWide, imageSmall, linkTo } = props;
+type SingleSlideProps = {
+  title: string;
+  text: string;
+  buttonText: string;
+  imageWide: string;
+  imageSmall: string;
+  linkTo: string;
+}
 
+const SingleSlide: React.FC<SingleSlideProps> = ({ title, text, buttonText, imageWide, imageSmall, linkTo }) => {
   const isMoreThan769 = useMediaQuery({
     minWidth: 769,
   });

@@ -3,9 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './SingleProduct.module.scss';
-import Production from '../../components/Production/Production.tsx';
+import Production from '../../components/Production/Production';
 import NotFound from '../NotFound/NotFound';
 import AddBasket from '../../components/CardButtons/AddBasket';
+import { useSelector } from 'react-redux';
+import { selectCakes } from '../../redux/slices/cakesSlice';
 
 const SingleProduct: React.FC = () => {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ const SingleProduct: React.FC = () => {
     image: string;
   }>();
   const [similar, setSimilar] = useState([]);
+  const { status } = useSelector(selectCakes);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -70,7 +73,7 @@ const SingleProduct: React.FC = () => {
   }, [isLoading]);
 
   if (!cake) {
-    return <NotFound />;
+    return <>Загрузка ...</>;
   }
 
   return (
@@ -124,7 +127,10 @@ const SingleProduct: React.FC = () => {
             <h3 className={styles.FromCategory}>
               Другие товары из этой категории:
             </h3>
-            <Production cakes={similar} />
+            <Production
+              cakes={similar}
+              status={status}
+            />
           </div>
         </div>
       )}

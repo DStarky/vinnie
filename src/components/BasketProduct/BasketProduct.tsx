@@ -31,7 +31,7 @@ const BasketProduct: React.FC<BasketProductProps> = ({ count, image, name, price
       </div>
       <ProductCount
         count={count}
-        id={id}
+        id={Number(id)}
       />
       <p className={styles.Total}>
         Итого: <span className={styles.Sum}>{price * count} ₽</span>

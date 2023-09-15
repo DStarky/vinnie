@@ -1,15 +1,14 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const Skeleton = (props) => (
+const Skeleton: React.FC = () => (
   <ContentLoader
     speed={2}
     width={380}
     height={600}
     viewBox='0 0 380 600'
     backgroundColor='#d8d8d8'
-    foregroundColor='#cf96b3'
-    {...props}>
+    foregroundColor='#cf96b3'>
     <rect
       x='37'
       y='291'

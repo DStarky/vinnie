@@ -13,6 +13,9 @@ import slides from '../../data/slides.json';
 import styles from './Slider.module.scss'
 import SingleSlide from '../SingleSlide/SingleSlide';
 
+
+
+
 // Compontent
 const Slider = () => {
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
