@@ -4,7 +4,16 @@ import { LuPlus } from 'react-icons/lu';
 import { addToBasket, selectBasket } from '../../redux/slices/basketSlice';
 import styles from './CardButtons.module.scss';
 
-const AddBasket = ({ name, image, price, id, link, text }) => {
+type AddBasketProps = {
+  name: string;
+  image: string;
+  price: number;
+  id: string;
+  link: string;
+  text: boolean;
+}
+
+const AddBasket: React.FC<AddBasketProps> = ({ name, image, price, id, link, text}) => {
   const dispatch = useDispatch();
 
   const productsInBasket = useSelector(selectBasket).products;

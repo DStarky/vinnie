@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { addToBasket, selectBasket } from '../../redux/slices/basketSlice';
 import styles from './SingleProduct.module.scss';
 import Production from '../../components/Production/Production';
 import NotFound from '../NotFound/NotFound';
 import AddBasket from '../../components/CardButtons/AddBasket';
 
-const SingleProduct = () => {
+const SingleProduct: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { slug } = useParams();
-  const [cake, setCake] = useState({});
+  const [cake, setCake] = useState<{
+    name: string;
+    price: number;
+    category: string;
+    properties: [];
+    weight: string;
+    description: string;
+    link: string;
+    slug: string;
+    id: string;
+    image: string;
+  }>();
   const [similar, setSimilar] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -44,10 +52,12 @@ const SingleProduct = () => {
     const getSimilar = async () => {
       try {
         const { data } = await axios.get(
-          `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake.category}`,
+          `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake?.category}`,
         );
         const filteredData = data.filter(
-          (product) => product.name !== cake.name,
+          (product: {
+            name: string;
+          }) => product.name !== cake?.name,
         );
 
         setSimilar(filteredData.slice(0, 3));
