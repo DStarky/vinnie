@@ -12,7 +12,7 @@ const NotificationButton: React.FC = () => {
   const [isShow, setIsShow] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
