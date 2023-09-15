@@ -11,7 +11,7 @@ import BurgerButton from '../HeaderButtons/BurgerButton';
 
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
@@ -50,7 +50,7 @@ const Header = () => {
       <div className={styles.Buttons}>
         {isMoreThan769 && (
           <>
-            <NotificationButton notifications={2} />
+            <NotificationButton />
             <Link to='favourites'>
               <FavoriteButton />
             </Link>
