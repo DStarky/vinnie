@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import styles from './SingleProduct.module.scss';
 import Production from '../../components/Production/Production';
-import NotFound from '../NotFound/NotFound';
 import AddBasket from '../../components/CardButtons/AddBasket';
 import { useSelector } from 'react-redux';
 import { selectCakes } from '../../redux/slices/cakesSlice';
