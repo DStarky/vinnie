@@ -3,10 +3,20 @@ import styles from './Card.module.scss';
 import AddFavourite from '../CardButtons/AddFavourite';
 import AddBasket from '../CardButtons/AddBasket';
 
-const Card = (props) => {
-  const { name, price, image, properties, weight, description, slug, id } =
-    props;
+type CardProps = {
+  name: string;
+  price: number;
+  image: string;
+  properties: string[];
+  weight: string;
+  description: string;
+  slug: string;
+  id: string;
+};
 
+
+
+const Card: React.FC<CardProps> = ({ name, price, image, properties, weight, description, slug, id }) => {
   return (
     <li className={styles.Card}>
       {properties && (
@@ -51,6 +61,7 @@ const Card = (props) => {
           name={name}
           price={price}
           id={Number(id)}
+          text={false}
         />
       </div>
     </li>
