@@ -11,13 +11,22 @@ type AddBasketProps = {
   id: string;
   link: string;
   text: boolean;
-}
+};
 
-const AddBasket: React.FC<AddBasketProps> = ({ name, image, price, id, link, text}) => {
+const AddBasket: React.FC<AddBasketProps> = ({
+  name,
+  image,
+  price,
+  id,
+  link,
+  text,
+}) => {
   const dispatch = useDispatch();
 
   const productsInBasket = useSelector(selectBasket).products;
-  const elementInBasket = productsInBasket.find((el) => el.id === Number(id));
+  const elementInBasket = productsInBasket.find(
+    (el: { id: number }) => el.id === Number(id),
+  );
 
   const handleClick = () => {
     dispatch(
@@ -25,7 +34,7 @@ const AddBasket: React.FC<AddBasketProps> = ({ name, image, price, id, link, tex
         name,
         image,
         price,
-        id : Number(id),
+        id: Number(id),
         link,
       }),
     );
