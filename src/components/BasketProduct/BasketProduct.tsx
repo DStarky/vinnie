@@ -2,7 +2,16 @@ import styles from './BasketProduct.module.scss';
 import ProductCount from '../ProductCount/ProductCount';
 import { Link } from 'react-router-dom';
 
-const BasketProduct = ({ count, image, name, price, id, link }) => {
+type BasketProductProps = {
+  count: number;
+  image: string;
+  name: string;
+  price: number;
+  id: string;
+  link: string;
+};
+
+const BasketProduct: React.FC<BasketProductProps> = ({ count, image, name, price, id, link }) => {
   return (
     <div className={styles.Root}>
       <div className={styles.Cover}>
