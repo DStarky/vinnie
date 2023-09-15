@@ -3,8 +3,16 @@ import { useDispatch } from 'react-redux';
 import { setCategoryIndex } from '../../redux/slices/filterSlice';
 import styles from './Categories.module.scss';
 
-const Categories = (props) => {
-  const { categories, activeIndex } = props;
+type CategoriesProps = {
+  categories: {
+    "name": string;
+    "request": string;
+  }[];
+  activeIndex: number;
+}
+
+
+const Categories: React.FC<CategoriesProps> = ({ categories, activeIndex }) => {
   const dispath = useDispatch();
 
   const isMoreThan769 = useMediaQuery({ minWidth: 769 });
