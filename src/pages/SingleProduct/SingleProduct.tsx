@@ -19,7 +19,7 @@ const SingleProduct: React.FC = () => {
     description: string;
     link: string;
     slug: string;
-    id: string;
+    id: number;
     image: string;
   }>();
   const [similar, setSimilar] = useState([]);
@@ -35,7 +35,7 @@ const SingleProduct: React.FC = () => {
         const { data } = await axios.get(
           `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?slug=${slug}`,
         );
-        setCake(data[0]);
+        setCake({ ...data[0], id: Number(data[0].id) });
         setIsLoading(false);
       } catch (error) {
         alert(
@@ -45,7 +45,6 @@ const SingleProduct: React.FC = () => {
       }
     };
     getPizza();
-    
   }, [slug]);
 
   useEffect(() => {
@@ -55,9 +54,7 @@ const SingleProduct: React.FC = () => {
           `https://64e5c4a909e64530d17efcf9.mockapi.io/productions?category=${cake?.category}`,
         );
         const filteredData = data.filter(
-          (product: {
-            name: string;
-          }) => product.name !== cake?.name,
+          (product: { name: string }) => product.name !== cake?.name,
         );
 
         setSimilar(filteredData.slice(0, 3));
@@ -112,7 +109,10 @@ const SingleProduct: React.FC = () => {
                 <span>{cake.price}</span> руб.
               </p>
               <div className={styles.AddToBasket}>
-                <AddBasket {...cake} text/>
+                <AddBasket
+                  {...cake}
+                  text
+                />
               </div>
               <p className={styles.Weight}>
                 Вес: <span>{cake.weight}</span>
