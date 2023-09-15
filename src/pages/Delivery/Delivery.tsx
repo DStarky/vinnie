@@ -1,4 +1,4 @@
-const Delivery = () => {
+const Delivery: React.FC = () => {
   return (
     <div className={`page-wrapper`}>
       <h2>Доставка</h2>
