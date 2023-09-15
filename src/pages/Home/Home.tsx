@@ -3,7 +3,7 @@ import { useRef } from 'react';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   resetFilters,
   selectFilter,
@@ -15,9 +15,6 @@ import {
   selectCakes,
 } from '../../redux/slices/cakesSlice';
 
-//import styles
-import styles from './Home.module.scss';
-
 //import components
 import Categories from '../../components/Categories/Categories';
 import Slider from '../../components/Slider/Slider';
@@ -28,7 +25,7 @@ import Pagination from '../../components/Pagination/Pagination';
 // import categories from back
 import categories from '../../data/categories.json';
 
-const Home = () => {
+const Home: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isMounted = useRef(false);
@@ -53,8 +50,10 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    // @ts-ignore
     dispatch(fetchCakesCount({ categoryRequest, searchRequest })); // for pagination
     dispatch(
+      // @ts-ignore
       fetchCakesPage({ categoryRequest, searchRequest, paginationRequest }),
     ); // get one of pages
   }, [categoryRequest, searchRequest, paginationRequest]);
@@ -79,7 +78,7 @@ const Home = () => {
         categories={categories}
         activeIndex={categoryIndex}
       />
-      <Search searchValue={searchValue} />
+      <Search />
       <Production
         cakes={cakes}
         status={status}

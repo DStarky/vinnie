@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Delivery from "./pages/Delivery/Delivery";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import News from "./pages/News/News.tsx";
+import News from "./pages/News/News";
 import Favourites from "./pages/Favourites/Favourites"
 import UserPage from "./pages/UserPage/UserPage"
 import BasketPage from "./pages/BasketPage/BasketPage"
