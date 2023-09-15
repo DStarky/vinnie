@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 
@@ -9,7 +9,7 @@ import {
 } from '../../redux/slices/filterSlice';
 import styles from './Search.module.scss';
 
-const Search = () => {
+const Search: React.FC = () => {
   const dispatch = useDispatch();
   const { searchBeforeDebounce } = useSelector(selectFilter);
 
@@ -20,7 +20,7 @@ const Search = () => {
     [],
   );
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: any) => {
     dispatch(
       setSearchBeforeDebounce({
         text: event.target.value,
