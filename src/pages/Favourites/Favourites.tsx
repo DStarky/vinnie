@@ -1,4 +1,4 @@
-const Favourites = () => {
+const Favourites: React.FC = () => {
   return (
     <h1>Favourites</h1>
   )
