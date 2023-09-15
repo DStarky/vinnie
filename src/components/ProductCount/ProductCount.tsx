@@ -2,10 +2,16 @@ import { useDispatch } from 'react-redux';
 import { changeCount } from '../../redux/slices/basketSlice';
 import styles from './ProductCount.module.scss';
 
-const ProductCount = ({ count, id }) => {
+type ProductCountProps = {
+  count: number;
+  id: number;
+}
+
+
+const ProductCount: React.FC<ProductCountProps> = ({ count, id }) => {
   const dispatch = useDispatch();
 
-  const counterHandler = (sign, id) => {
+  const counterHandler = (sign: 'minus' | 'plus', id: number) => {
     dispatch(
       changeCount({
         sign,

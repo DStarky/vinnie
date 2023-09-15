@@ -3,9 +3,15 @@ import { NavLink } from 'react-router-dom';
 import { LuPhone, LuX } from 'react-icons/lu';
 
 import styles from './NavBar.module.scss';
-import menuElements from '../../data/navigation';
+import menuElements from '../../data/navigation.json';
 
-const NavBar = ({ isOpen, setOpen, isShow }) => {
+type NavBarProps = {
+  isOpen: boolean;
+  setOpen: (value: boolean) => void;
+  isShow: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ isOpen, setOpen, isShow }) => {
   const isMoreThan1300 = useMediaQuery({ minWidth: 1300 });
 
   return (

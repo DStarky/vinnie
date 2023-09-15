@@ -2,8 +2,17 @@ import { useDispatch } from 'react-redux';
 import { setActivePage } from '../../redux/slices/filterSlice';
 import styles from './Pagination.module.scss';
 
-const Pagination = (props) => {
-  const { count, limit, activePage } = props;
+type PaginationProps = {
+  count: number;
+  limit: number;
+  activePage: number;
+};
+
+const Pagination: React.FC<PaginationProps> = ({
+  count,
+  limit,
+  activePage,
+}) => {
   const pageValue = Math.ceil(count / limit);
   const pages = new Array(pageValue).fill(null);
 

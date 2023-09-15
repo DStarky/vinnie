@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './SingleProduct.module.scss';
-import Production from '../../components/Production/Production';
+import Production from '../../components/Production/Production.tsx';
 import NotFound from '../NotFound/NotFound';
 import AddBasket from '../../components/CardButtons/AddBasket';
 
