@@ -1,17 +1,11 @@
 import styles from './BasketProduct.module.scss';
 import ProductCount from '../ProductCount/ProductCount';
 import { Link } from 'react-router-dom';
+import { Product } from '../../redux/slices/basketSlice';
 
-type BasketProductProps = {
-  count: number;
-  image: string;
-  name: string;
-  price: number;
-  id: string;
-  link: string;
-};
 
-const BasketProduct: React.FC<BasketProductProps> = ({ count, image, name, price, id, link }) => {
+
+const BasketProduct: React.FC<Product> = ({ count, image, name, price, id, link }) => {
   return (
     <div className={styles.Root}>
       <div className={styles.Cover}>
@@ -30,11 +24,11 @@ const BasketProduct: React.FC<BasketProductProps> = ({ count, image, name, price
         </p>
       </div>
       <ProductCount
-        count={count}
+        count={count ? count : 0}
         id={Number(id)}
       />
       <p className={styles.Total}>
-        Итого: <span className={styles.Sum}>{price * count} ₽</span>
+        Итого: <span className={styles.Sum}>{count ? price * count : '0'} ₽</span>
       </p>
     </div>
   );

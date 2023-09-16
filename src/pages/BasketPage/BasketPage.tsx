@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import BasketProduct from '../../components/BasketProduct/BasketProduct';
 import styles from './BasketPage.module.scss';
-import { clearProducts, selectBasket } from '../../redux/slices/basketSlice';
+import { Product, clearProducts, selectBasket } from '../../redux/slices/basketSlice';
 
 const BasketPage: React.FC = () => {
   const productsInBasket = useSelector(selectBasket).products;
@@ -38,23 +38,14 @@ const BasketPage: React.FC = () => {
               </button>
             </div>
             <ul className={styles.List}>
-              {productsInBasket.map(
-                (el: {
-                  count: number;
-                  image: string;
-                  name: string;
-                  price: number;
-                  id: string;
-                  link: string;
-                }) => {
-                  return (
-                    <BasketProduct
-                      key={el.name}
-                      {...el}
-                    />
-                  );
-                },
-              )}
+              {productsInBasket.map((el: Product) => {
+                return (
+                  <BasketProduct
+                    key={el.name}
+                    {...el}
+                  />
+                );
+              })}
             </ul>
             <p className={styles.Amount}>
               Сумма: <span>{totalAmount}₽</span>

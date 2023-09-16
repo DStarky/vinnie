@@ -42,7 +42,8 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      dispatch(setFilters({ ...params }));
+      const filteredParams = {categoryIndex : params.category, activePage: params.page}
+      dispatch(setFilters({...filteredParams}));
     }
     dispatch(resetFilters());
   }, []);
