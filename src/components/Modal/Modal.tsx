@@ -18,8 +18,8 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
 }) => {
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         onClose();
       }
     };

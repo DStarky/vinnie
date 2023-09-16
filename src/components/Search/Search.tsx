@@ -20,7 +20,7 @@ const Search: React.FC = () => {
     [],
   );
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       setSearchBeforeDebounce({
         text: event.target.value,

@@ -38,14 +38,23 @@ const BasketPage: React.FC = () => {
               </button>
             </div>
             <ul className={styles.List}>
-              {productsInBasket.map((el: any) => {
-                return (
-                  <BasketProduct
-                    key={el.name}
-                    {...el}
-                  />
-                );
-              })}
+              {productsInBasket.map(
+                (el: {
+                  count: number;
+                  image: string;
+                  name: string;
+                  price: number;
+                  id: string;
+                  link: string;
+                }) => {
+                  return (
+                    <BasketProduct
+                      key={el.name}
+                      {...el}
+                    />
+                  );
+                },
+              )}
             </ul>
             <p className={styles.Amount}>
               Сумма: <span>{totalAmount}₽</span>
