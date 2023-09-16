@@ -2,12 +2,13 @@ import qs from 'qs';
 import { useRef } from 'react';
 
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   resetFilters,
   selectFilter,
   setFilters,
+  filterSliceState
 } from '../../redux/slices/filterSlice';
 import {
   fetchCakesCount,
@@ -24,10 +25,11 @@ import Pagination from '../../components/Pagination/Pagination';
 
 // import categories from back
 import categories from '../../data/categories.json';
+import { useAppDispatch } from '../../redux/store';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isMounted = useRef(false);
 
   const { activePage, searchValue, categoryIndex } = useSelector(selectFilter);
@@ -41,9 +43,8 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      const filteredParams = {categoryIndex : params.category, activePage: params.page}
-      dispatch(setFilters({...filteredParams}));
+      const params = qs.parse(window.location.search.substring(1)) as unknown as { page: string, category: string };
+      dispatch(setFilters(params));
     }
     dispatch(resetFilters());
   }, []);
@@ -51,10 +52,8 @@ const Home: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // @ts-ignore
     dispatch(fetchCakesCount({ categoryRequest, searchRequest })); // for pagination
     dispatch(
-      // @ts-ignore
       fetchCakesPage({ categoryRequest, searchRequest, paginationRequest }),
     ); // get one of pages
   }, [categoryRequest, searchRequest, paginationRequest]);

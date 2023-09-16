@@ -36,6 +36,7 @@ const AddBasket: React.FC<AddBasketProps> = ({
         price,
         id,
         link,
+        count: 0
       }),
     );
   };

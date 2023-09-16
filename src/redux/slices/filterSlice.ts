@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-interface filterSliceState {
+export interface filterSliceState {
   categoryIndex: number;
   activePage: number;
   searchValue: string;
