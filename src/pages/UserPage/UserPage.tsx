@@ -1,4 +1,4 @@
 const UserPage: React.FC = () => {
-  return <h1>UserPage</h1>;
+  return <section className={`page-wrapper`}> <h2>Страница пользователя</h2></section>;
 };
 export default UserPage;
