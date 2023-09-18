@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { getCartFromLS } from '../../utils/getCartFromLS';
 
 export type Product = {
   name: string;
@@ -17,18 +16,11 @@ interface basketSliceState {
   products: Product[];
 }
 
-const updateLocalStorage = (state: basketSliceState) => {
-  const json = JSON.stringify(state.products);
-  localStorage.setItem('cart', json);
-};
-
-const { totalAmount, totalCount, products } = getCartFromLS();
-
 // Создаем начальное значение (по аналогии с useState)
 const initialState: basketSliceState = {
-  totalAmount: totalAmount,
-  totalCount: totalCount,
-  products: products,
+  totalAmount: 0,
+  totalCount: 0,
+  products: [],
 };
 
 // Создаем slice (отдельное хранилище с данными и методами)
@@ -49,8 +41,6 @@ const basketSlice = createSlice({
       }
       state.totalCount += 1;
       state.totalAmount += product.price;
-
-      updateLocalStorage(state);
     },
 
     changeCount(state, action: PayloadAction<{ sign: string; id: number }>) {
@@ -68,11 +58,11 @@ const basketSlice = createSlice({
         }
 
         if (product.count < 1) {
-          state.products = state.products.filter((el) => el.id !== action.payload.id);
+          state.products = state.products.filter(
+            (el) => el.id !== action.payload.id,
+          );
         }
       }
-
-      updateLocalStorage(state);
     },
 
     clearProducts(state) {

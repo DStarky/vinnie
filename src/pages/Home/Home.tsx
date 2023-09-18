@@ -4,8 +4,17 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectFilter, setFilters } from '../../redux/slices/filterSlice';
-import { fetchCakesCount, fetchCakesPage, selectCakes } from '../../redux/slices/cakesSlice';
+import {
+  resetFilters,
+  selectFilter,
+  setFilters,
+  filterSliceState
+} from '../../redux/slices/filterSlice';
+import {
+  fetchCakesCount,
+  fetchCakesPage,
+  selectCakes,
+} from '../../redux/slices/cakesSlice';
 
 //import components
 import Categories from '../../components/Categories/Categories';
@@ -34,7 +43,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1)) as { page: string; category: string };
+      const params = qs.parse(window.location.search.substring(1)) as { page: string, category: string };
       dispatch(setFilters(params));
     }
     // dispatch(resetFilters());
@@ -44,7 +53,9 @@ const Home: React.FC = () => {
     window.scrollTo(0, 0);
 
     dispatch(fetchCakesCount({ categoryRequest, searchRequest })); // for pagination
-    dispatch(fetchCakesPage({ categoryRequest, searchRequest, paginationRequest })); // get one of pages
+    dispatch(
+      fetchCakesPage({ categoryRequest, searchRequest, paginationRequest }),
+    ); // get one of pages
   }, [categoryRequest, searchRequest, paginationRequest]);
 
   useEffect(() => {
