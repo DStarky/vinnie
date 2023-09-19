@@ -41,8 +41,7 @@ const NotificationButton: React.FC = () => {
 		}
 	}, []);
 
-  
-  function showModal() {
+	function showModal() {
 		setIsShow(prev => !prev);
 	}
 
