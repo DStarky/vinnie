@@ -95,6 +95,6 @@ const cakesSlice = createSlice({
   },
 });
 
-export const selectCakes = (state: RootState) => state.cakes;
+export const selectCakes = (state: RootState) => state.persistedReducer.cakes;
 export const {} = cakesSlice.actions;
 export default cakesSlice.reducer;

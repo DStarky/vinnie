@@ -73,6 +73,6 @@ const basketSlice = createSlice({
   },
 });
 
-export const selectBasket = (state: RootState) => state.basket;
+export const selectBasket = (state: RootState) => state.persistedReducer.basket;
 export const { addToBasket, changeCount, clearProducts } = basketSlice.actions;
 export default basketSlice.reducer;

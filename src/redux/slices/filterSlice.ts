@@ -53,7 +53,7 @@ const filterSlice = createSlice({
     },
   },
 });
-export const selectFilter = (state: RootState) => state.filter;
+export const selectFilter = (state: RootState) => state.persistedReducer.filter;
 
 export const {
   setCategoryIndex,
