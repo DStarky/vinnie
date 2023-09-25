@@ -21,3 +21,4 @@ export { default as Search } from './Search/Search';
 export { default as SingleSlide } from './SingleSlide/SingleSlide';
 export { default as Skeleton } from './Skeleton/Skeleton';
 export { default as Slider } from './Slider/Slider';
+export { default as AnotherNews } from './AnotherNews/AnotherNews';
