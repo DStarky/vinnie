@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+import useWindowSize from 'react-use/lib/useWindowSize';
+import Confetti from 'react-confetti';
 import styles from './Order.module.scss';
+import { useSelector } from 'react-redux';
+
+import { Product, clearProducts, selectBasket } from '../../redux/slices/basketSlice';
 
 type FormValues = {
 	firstName: string;
@@ -11,7 +17,18 @@ type FormValues = {
 };
 
 const Order: React.FC = () => {
-	const [userData, setUserData] = useState({});
+	const { width, height } = useWindowSize();
+	const [userData, setUserData] = useState<FormValues>({
+		firstName: '',
+		lastName: '',
+		email: '',
+		phone: '',
+		adress: '',
+	});
+
+	const [isSubmited, setIsSubmitted] = useState(false);
+
+	const productsInBasket = useSelector(selectBasket).products;
 
 	const setValues = (values: {}) => {
 		setUserData(prevData => ({
@@ -29,9 +46,60 @@ const Order: React.FC = () => {
 	} = useForm<FormValues>({ mode: 'onBlur' });
 
 	const onSubmit: SubmitHandler<FormValues> = (data: any) => {
-		alert(JSON.stringify(data));
+		// alert(JSON.stringify(data));
 		reset();
+		setIsSubmitted(true);
+		setValues(data);
 	};
+
+	if (isSubmited) {
+		return (
+			<div className={styles.order}>
+				<Confetti
+					width={width}
+					height={height}
+					recycle={false}
+					numberOfPieces={1000}
+					gravity={0.5}
+				/>
+				<h2>Подтвердите заказ:</h2>
+
+				<div className={styles.details}>
+					<h3 className={styles.blockTitle}>Детали доставки</h3>
+					<p>
+						<strong>Ваше имя: </strong> {userData.firstName}
+					</p>
+					<p>
+						<strong>Ваше фамилия: </strong> {userData.lastName || 'не указана'}
+					</p>
+					<p>
+						<strong>Ваш телефон: </strong> {userData.phone}
+					</p>
+					<p>
+						<strong>Ваше email: </strong> {userData.email || 'не указан'}
+					</p>
+					<p>
+						<strong>Ваше адрес: </strong> {userData.adress}
+					</p>
+				</div>
+
+				<div className={styles.products}>
+					<h3 className={styles.blockTitle}>Ваши товары:</h3>
+					<ul className={styles.list}>
+						{productsInBasket.map((el: Product) => {
+							return (
+								<li
+									key={el.name}
+									className={styles.item}>
+									{el.name} X {el.count} шт.
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className={styles.root}>

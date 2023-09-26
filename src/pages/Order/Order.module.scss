@@ -87,3 +87,31 @@
 
   }
 }
+
+.order {
+  background-color: $color-bg-white;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+}
+
+.details {
+  margin: 3.6rem 0;
+
+  p {
+    margin-top: 1.2rem;
+  }
+}
+
+.blockTitle {
+  margin-bottom: 2.4rem;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.item {
+  &:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
+}
