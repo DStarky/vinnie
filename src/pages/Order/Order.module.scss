@@ -1,7 +1,89 @@
 @import '../../assets/styles/variables';
 
-.root{
+.root {
   background-color: $color-bg-white;
   padding: 2rem;
   border-radius: 1.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.4rem auto;
+}
+
+.block {
+  margin-bottom: 1.2rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.8rem;
+
+}
+
+.input {
+  padding: 1.2rem 2.4rem;
+
+  &:focus-visible {
+    outline: 1px solid $color-main;
+    outline-offset: 0.4rem;
+
+  }
+
+}
+
+.error {
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  color: red;
+}
+
+.small {
+  font-size: 1.2rem;
+}
+
+.button {
+  margin-top: 2.4rem;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  outline: none;
+
+  background-color: $color-main;
+  border-radius: 1.2rem;
+  color: $color-bg-white;
+  padding: 1.2rem 2.4rem;
+  position: relative;
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: brightness(1.1)
+  }
+
+  &.Active {
+    background-color: transparent;
+    border: 1px solid hsl(328, 92%, 47%);
+    border-radius: 1.2rem;
+    color: hsl(328, 92%, 47%);
+    padding: 1.1rem 2.3rem;
+  }
+
+  &:disabled {
+    background: $color-bg-gray;
+    cursor: not-allowed;
+  }
+
+  &:disabled:hover {
+    filter: brightness(1)
+  }
+
+  &:focus-visible {
+    outline: 1px solid $color-main;
+    outline-offset: 0.4rem;
+
+  }
 }
