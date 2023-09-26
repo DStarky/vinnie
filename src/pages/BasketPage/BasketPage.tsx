@@ -50,7 +50,7 @@ const BasketPage: React.FC = () => {
 						</ul>
 						<div className={styles.bottom}>
 							<Link
-								to='order'
+								to='/order'
 								className={styles.link}>
 								<button className={styles.button}>Оформить заказ</button>
 							</Link>

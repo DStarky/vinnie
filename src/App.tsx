@@ -13,7 +13,7 @@ const Favourites = lazy(() => import('./pages/Favourites/Favourites'));
 const UserPage = lazy(() => import('./pages/UserPage/UserPage'));
 const BasketPage = lazy(() => import('./pages/BasketPage/BasketPage'));
 const SingleProduct = lazy(() => import('./pages/SingleProduct/SingleProduct'));
-
+const Order = lazy(() => import('./pages/Order/Order'));
 
 function App() {
 	return (
@@ -71,6 +71,14 @@ function App() {
 						element={
 							<Suspense fallback={<h1>Идет загрузка ...</h1>}>
 								<BasketPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path='order'
+						element={
+							<Suspense fallback={<h1>Идет загрузка ...</h1>}>
+								<Order />
 							</Suspense>
 						}
 					/>

@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
 	filter: filterReducer,
 	basket: basketReducer,
 	cakes: cakesReducer,
+	
 });
 
 const persistConfig = {
