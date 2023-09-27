@@ -17,10 +17,9 @@ const ConfirmItem: React.FC<Product> = ({ image, name, price, count }) => {
 				</div>
 				<p className={styles.count}>{count} шт.</p>
 				<p className={styles.total}>
-					Итого: <span className={styles.sum}>{count ? price * count : '0'} ₽</span>
+					<span className={styles.amount}>Итого:</span> <span className={styles.sum}>{count ? price * count : '0'} ₽</span>
 				</p>
 			</div>
-
 		</>
 	);
 };
