@@ -14,6 +14,7 @@ const UserPage = lazy(() => import('./pages/UserPage/UserPage'));
 const BasketPage = lazy(() => import('./pages/BasketPage/BasketPage'));
 const SingleProduct = lazy(() => import('./pages/SingleProduct/SingleProduct'));
 const Order = lazy(() => import('./pages/Order/Order'));
+const Success = lazy(() => import('./pages/Success/Success'));
 
 function App() {
 	return (
@@ -79,6 +80,14 @@ function App() {
 						element={
 							<Suspense fallback={<h1>Идет загрузка ...</h1>}>
 								<Order />
+							</Suspense>
+						}
+					/>
+					<Route
+						path='success'
+						element={
+							<Suspense fallback={<h1>Идет загрузка ...</h1>}>
+								<Success />
 							</Suspense>
 						}
 					/>

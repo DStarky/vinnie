@@ -1,0 +1,14 @@
+@import '../../assets/styles/variables';
+
+.root {
+  background-color: $color-bg-white;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 40rem;
+  aspect-ratio: 1;
+}

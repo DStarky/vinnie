@@ -3,13 +3,22 @@ import { FormValues } from '../Order/Order';
 import { useSelector } from 'react-redux';
 import { Product, selectBasket } from '../../redux/slices/basketSlice';
 import { ConfirmItem } from '../../components';
+import { useNavigate } from 'react-router-dom';
 
 type ConfirmOrderProps = {
 	userData: FormValues;
 };
 
 const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ userData }) => {
+	const navigate = useNavigate();
 	const productsInBasket = useSelector(selectBasket).products;
+
+	const buttonNoHandler = () => {
+		navigate('/basket');
+	};
+	const buttonYesHandler = () => {
+		navigate('/success');
+	};
 
 	return (
 		<div className={styles.order}>
@@ -50,8 +59,16 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ userData }) => {
 				</div>
 
 				<div className={styles.buttons}>
-					<button className={styles.buttonYes}>Все верно</button>
-					<button className={styles.buttonNo}>Вернуться в корзину</button>
+					<button
+						className={styles.buttonYes}
+						onClick={buttonYesHandler}>
+						Все верно
+					</button>
+					<button
+						className={styles.buttonNo}
+						onClick={buttonNoHandler}>
+						Вернуться в корзину
+					</button>
 				</div>
 			</div>
 		</div>
