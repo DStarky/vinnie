@@ -37,12 +37,7 @@ const Header: React.FC = () => {
 				{isMoreThan769 && (
 					<>
 						<NotificationButton />
-						<Link to='favourites'>
-							<FavoriteButton />
-						</Link>
-						<Link to='user-page'>
-							<UserButton />
-						</Link>
+
 					</>
 				)}
 
