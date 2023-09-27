@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import useWindowSize from 'react-use/lib/useWindowSize';
-import Confetti from 'react-confetti';
 import styles from './Order.module.scss';
-import { useSelector } from 'react-redux';
 
-import { Product, clearProducts, selectBasket } from '../../redux/slices/basketSlice';
+import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
 
-type FormValues = {
+export type FormValues = {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -28,7 +26,7 @@ const Order: React.FC = () => {
 
 	const [isSubmited, setIsSubmitted] = useState(false);
 
-	const productsInBasket = useSelector(selectBasket).products;
+
 
 	const setValues = (values: {}) => {
 		setUserData(prevData => ({
@@ -53,52 +51,7 @@ const Order: React.FC = () => {
 	};
 
 	if (isSubmited) {
-		return (
-			<div className={styles.order}>
-				<Confetti
-					width={width}
-					height={height}
-					recycle={false}
-					numberOfPieces={1000}
-					gravity={0.5}
-				/>
-				<h2>Подтвердите заказ:</h2>
-
-				<div className={styles.details}>
-					<h3 className={styles.blockTitle}>Детали доставки</h3>
-					<p>
-						<strong>Ваше имя: </strong> {userData.firstName}
-					</p>
-					<p>
-						<strong>Ваше фамилия: </strong> {userData.lastName || 'не указана'}
-					</p>
-					<p>
-						<strong>Ваш телефон: </strong> {userData.phone}
-					</p>
-					<p>
-						<strong>Ваше email: </strong> {userData.email || 'не указан'}
-					</p>
-					<p>
-						<strong>Ваше адрес: </strong> {userData.adress}
-					</p>
-				</div>
-
-				<div className={styles.products}>
-					<h3 className={styles.blockTitle}>Ваши товары:</h3>
-					<ul className={styles.list}>
-						{productsInBasket.map((el: Product) => {
-							return (
-								<li
-									key={el.name}
-									className={styles.item}>
-									{el.name} X {el.count} шт.
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-			</div>
-		);
+		return <ConfirmOrder userData={userData} />;
 	}
 
 	return (
