@@ -1,7 +1,7 @@
 import styles from './ConfirmOrder.module.scss';
 import { FormValues } from '../Order/Order';
-import { useSelector } from 'react-redux';
-import { Product, selectBasket } from '../../redux/slices/basketSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { Product, selectBasket, clearProducts } from '../../redux/slices/basketSlice';
 import { ConfirmItem } from '../../components';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ type ConfirmOrderProps = {
 
 const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ userData }) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const productsInBasket = useSelector(selectBasket).products;
 
 	const buttonNoHandler = () => {
@@ -18,6 +20,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ userData }) => {
 	};
 	const buttonYesHandler = () => {
 		navigate('/success');
+		dispatch(clearProducts());
 	};
 
 	return (
